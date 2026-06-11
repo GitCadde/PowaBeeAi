@@ -1,0 +1,195 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "43c7f07cc34616540b63",
+  "position": {
+    "x": 24,
+    "y": 670,
+    "z": 5002,
+    "height": 330,
+    "width": 1872,
+    "tabOrder": 5002
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "jahr_kw"
+                }
+              },
+              "queryRef": "fakt_chpu.jahr_kw",
+              "nativeQueryRef": "jahr_kw",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist D"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist D",
+              "nativeQueryRef": "CHPU Ist D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist DI"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist DI",
+              "nativeQueryRef": "CHPU Ist DI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist I"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist I",
+              "nativeQueryRef": "CHPU Ist I"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Soll",
+              "nativeQueryRef": "CHPU Soll"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "CHPU Ist D"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "390699a7991bc107d008",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "jahr_kw"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d600c21170b3a0bce5a6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8ac25217306c865ad13b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist DI"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "50d474525c5249e4739d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist I"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "5887a2e35a2ebab81be0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Soll"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

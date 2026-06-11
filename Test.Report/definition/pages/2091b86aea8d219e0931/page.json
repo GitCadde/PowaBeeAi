@@ -31,5 +31,73 @@
         }
       }
     ]
+  },
+  "pageBinding": {
+    "name": "e5d13b952a722597948d",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "2329597dbc00eeb0ceb3",
+        "boundFilter": "ec376d71fe85254f6886",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        }
+      },
+      {
+        "name": "93add09a12be901ac996",
+        "boundFilter": "782c0fcc724e56cca654",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "kst_bezeichnung_kurz"
+          }
+        }
+      }
+    ]
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ec376d71fe85254f6886",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "782c0fcc724e56cca654",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "kst_bezeichnung_kurz"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
   }
 }

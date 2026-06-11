@@ -1,0 +1,201 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "88711906b0b98e973680",
+  "position": {
+    "x": 24,
+    "y": 280,
+    "z": 5020,
+    "height": 360,
+    "width": 1872,
+    "tabOrder": 5020
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "kst_bezeichnung_kurz"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.kst_bezeichnung_kurz",
+              "nativeQueryRef": "kst_bezeichnung_kurz",
+              "active": true
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "AnMin Ist KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.AnMin Ist KST",
+              "nativeQueryRef": "AnMin Ist KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "AnMin Soll KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.AnMin Soll KST",
+              "nativeQueryRef": "AnMin Soll KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "Delta AnMin KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.Delta AnMin KST",
+              "nativeQueryRef": "Delta AnMin KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "CHPU Ist KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.CHPU Ist KST",
+              "nativeQueryRef": "CHPU Ist KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "CHPU Soll KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.CHPU Soll KST",
+              "nativeQueryRef": "CHPU Soll KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "Delta CHPU KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.Delta CHPU KST",
+              "nativeQueryRef": "Delta CHPU KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "Ratio Ist KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.Ratio Ist KST",
+              "nativeQueryRef": "Ratio Ist KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "Ratio Soll KST"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.Ratio Soll KST",
+              "nativeQueryRef": "Ratio Soll KST"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "Ampel KST YTD"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.Ampel KST YTD",
+              "nativeQueryRef": "Ampel KST YTD"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Kostenstellen des Werks'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
