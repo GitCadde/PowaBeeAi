@@ -1,0 +1,376 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "30c9b9924e8e87a4cc58",
+  "position": {
+    "x": 40,
+    "y": 346,
+    "z": 1,
+    "height": 280,
+    "width": 1120,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "jahr_kw"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.jahr_kw",
+              "nativeQueryRef": "jahr_kw"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "source_plant_id"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.source_plant_id",
+              "nativeQueryRef": "source_plant_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "kst_bezeichnung_kurz"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.kst_bezeichnung_kurz",
+              "nativeQueryRef": "kst_bezeichnung_kurz"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "ze_ist"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu_kst.ze_ist)",
+              "nativeQueryRef": "Summe von ze_ist"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "ze_soll"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu_kst.ze_soll)",
+              "nativeQueryRef": "Summe von ze_soll"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "anmin_ist"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu_kst.anmin_ist)",
+              "nativeQueryRef": "Summe von anmin_ist"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "anmin_soll"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu_kst.anmin_soll)",
+              "nativeQueryRef": "Summe von anmin_soll"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "chpu_ist_i"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.chpu_ist_i",
+              "nativeQueryRef": "chpu_ist_i"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "chpu_soll"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.chpu_soll",
+              "nativeQueryRef": "chpu_soll"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "ratio_ist"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.ratio_ist",
+              "nativeQueryRef": "ratio_ist"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "ratio_soll"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.ratio_soll",
+              "nativeQueryRef": "ratio_soll"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "dd7979f5433668891dbd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "jahr_kw"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f720b5424975d56a6872",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c9f89da0deada003030b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "kst_bezeichnung_kurz"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6bf0aee4b2cab990c267",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu_kst"
+                  }
+                },
+                "Property": "ze_ist"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a3bf3dae298c7c009ed0",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu_kst"
+                  }
+                },
+                "Property": "ze_soll"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "308b3367d2c2a33d0010",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu_kst"
+                  }
+                },
+                "Property": "anmin_ist"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fb8f06d03b8da25674c8",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu_kst"
+                  }
+                },
+                "Property": "anmin_soll"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d383d1f93920b17e50de",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "chpu_ist_i"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7f86a51e405a226a6db9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "chpu_soll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "75441188dbbc5dc10b85",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "ratio_ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae0b9bec78580ba30e62",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu_kst"
+              }
+            },
+            "Property": "ratio_soll"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "2d20372f8e4c45420ab6",
+  "position": {
+    "x": 920.00000000000011,
+    "y": 504,
+    "z": 5005,
+    "height": 152,
+    "width": 176,
+    "tabOrder": 5005
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Delta AnMin DI"
+                }
+              },
+              "queryRef": "fakt_chpu.Delta AnMin DI",
+              "nativeQueryRef": "Delta AnMin DI"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Delta AnMin DI"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7a7dd3c7d5aaaabae0eb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Delta AnMin DI"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

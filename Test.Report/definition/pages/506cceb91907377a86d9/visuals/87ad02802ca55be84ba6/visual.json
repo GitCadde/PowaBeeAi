@@ -1,0 +1,135 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "87ad02802ca55be84ba6",
+  "position": {
+    "x": 0,
+    "y": 448.00000000000006,
+    "z": 5007,
+    "height": 152,
+    "width": 760,
+    "tabOrder": 5007
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "source_plant_id"
+                }
+              },
+              "queryRef": "fakt_chpu.source_plant_id",
+              "nativeQueryRef": "source_plant_id",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist",
+              "nativeQueryRef": "Ratio Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll",
+              "nativeQueryRef": "Ratio Soll"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Ratio Ist"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "249c67b9d503081d0a49",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9625884098d88baa023c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e09bf2a920ada9b17d31",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Soll"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

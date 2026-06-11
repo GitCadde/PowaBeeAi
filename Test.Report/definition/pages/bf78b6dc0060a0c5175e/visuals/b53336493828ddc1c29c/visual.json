@@ -1,0 +1,264 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b53336493828ddc1c29c",
+  "position": {
+    "x": 8,
+    "y": 0,
+    "z": 0,
+    "height": 280,
+    "width": 1072,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "jahr_kw"
+                }
+              },
+              "queryRef": "fakt_chpu.jahr_kw",
+              "nativeQueryRef": "jahr_kw"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "source_plant_id"
+                }
+              },
+              "queryRef": "fakt_chpu.source_plant_id",
+              "nativeQueryRef": "source_plant_id"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "ze_ist"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu.ze_ist)",
+              "nativeQueryRef": "Summe von ze_ist"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "ze_soll"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu.ze_soll)",
+              "nativeQueryRef": "Summe von ze_soll"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "anmin_ist"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu.anmin_ist)",
+              "nativeQueryRef": "Summe von anmin_ist"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "anmin_soll"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fakt_chpu.anmin_soll)",
+              "nativeQueryRef": "Summe von anmin_soll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Debug Anzahl Zeilen fakt_chpu"
+                }
+              },
+              "queryRef": "fakt_chpu.Debug Anzahl Zeilen fakt_chpu",
+              "nativeQueryRef": "Debug Anzahl Zeilen fakt_chpu"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "29e23c6c2790a6b00178",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "jahr_kw"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3f8e95b607a85e5bdc9a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3b14cef801a66e12e590",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "ze_ist"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "a915908477049076855a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "ze_soll"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "94e66e4d100bba52b83b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "anmin_ist"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d13a3beea2560aa9824b",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "anmin_soll"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "970bc3a22097d917186c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Debug Anzahl Zeilen fakt_chpu"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

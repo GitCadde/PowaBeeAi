@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "0e40eb2079585d224ea5",
+  "position": {
+    "x": 1032,
+    "y": 456,
+    "z": 5007,
+    "height": 144,
+    "width": 232,
+    "tabOrder": 5007
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "ZE Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.ZE Ist YTD",
+              "nativeQueryRef": "ZE Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "ZE Soll YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.ZE Soll YTD",
+              "nativeQueryRef": "ZE Soll YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Delta ZE YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Delta ZE YTD",
+              "nativeQueryRef": "Delta ZE YTD"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ab90df657697cd060bee",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "ZE Ist YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "910fcc22878791be56d0",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "ZE Soll YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "36da913d7697e5582b45",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Delta ZE YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

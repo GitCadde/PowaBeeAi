@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "fd7b6241cd9560d47200",
+  "position": {
+    "x": 214.76923076923077,
+    "y": 457.8461538461537,
+    "z": 5005,
+    "height": 72,
+    "width": 200.00000000000003,
+    "tabOrder": 5005
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist YTD",
+              "nativeQueryRef": "CHPU Ist YTD"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "CHPU Ist YTD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f2e40ed0d4e4b429e88a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

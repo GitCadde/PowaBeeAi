@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "3b1301ddae00428c072a",
+  "position": {
+    "x": 40,
+    "y": 344,
+    "z": 1,
+    "height": 280,
+    "width": 464,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Debug Anzahl Zeilen fakt_chpu"
+                }
+              },
+              "queryRef": "fakt_chpu.Debug Anzahl Zeilen fakt_chpu",
+              "nativeQueryRef": "Debug Anzahl Zeilen fakt_chpu"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Debug Anzahl Zeilen fakt_chpu"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "c495096fed5ae7ccc894",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Debug Anzahl Zeilen fakt_chpu"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

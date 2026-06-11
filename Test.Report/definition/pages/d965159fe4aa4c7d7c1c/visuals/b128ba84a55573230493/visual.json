@@ -1,0 +1,341 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "b128ba84a55573230493",
+  "position": {
+    "x": 8,
+    "y": 64,
+    "z": 5001,
+    "height": 592,
+    "width": 1264,
+    "tabOrder": 5001
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "source_plant_id"
+                }
+              },
+              "queryRef": "fakt_chpu.source_plant_id",
+              "nativeQueryRef": "source_plant_id",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Trend CHPU"
+                }
+              },
+              "queryRef": "fakt_chpu.Trend CHPU",
+              "nativeQueryRef": "Trend CHPU"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Soll",
+              "nativeQueryRef": "CHPU Soll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist",
+              "nativeQueryRef": "Ratio Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist YTD",
+              "nativeQueryRef": "Ratio Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist VSI"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist VSI",
+              "nativeQueryRef": "Ratio Ist VSI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist",
+              "nativeQueryRef": "CHPU Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist YTD",
+              "nativeQueryRef": "CHPU Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist VSI"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist VSI",
+              "nativeQueryRef": "CHPU Ist VSI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ampel Werk YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ampel Werk YTD",
+              "nativeQueryRef": "Ampel Werk YTD"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "layout": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Tabular'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d4de51c7cdb0103c82c7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "add8d9dad29c08e02803",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Trend CHPU"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0aa86b6c1a9a35866b75",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Soll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "eddc5bdfb9eb75018305",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0f014954c04b3e0d43e9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "54e19137887146083340",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist VSI"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7714866ec17bbed0ec03",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f6508dc34d003b89c1c9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d8872ef1a108da00065d",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist VSI"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dec69270abbd7c4d6b16",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ampel Werk YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

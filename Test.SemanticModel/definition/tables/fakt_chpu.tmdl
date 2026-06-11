@@ -1,0 +1,1691 @@
+table fakt_chpu
+	lineageTag: 29ca676d-5f32-4016-adae-ac6bbabb26e3
+
+	measure 'Debug Rohdaten fakt_chpu' =
+			
+			VAR _rows =
+			    TOPN(
+			        50,
+			        'fakt_chpu',
+			        'fakt_chpu'[jahr_kw], ASC,
+			        'fakt_chpu'[source_plant_id], ASC
+			    )
+			RETURN
+			CONCATENATEX(
+			    _rows,
+			    "KW=" & COALESCE('fakt_chpu'[jahr_kw], "∅")
+			    & " | Werk=" & COALESCE('fakt_chpu'[source_plant_id], "∅")
+			    & " | ZE_IST=" & FORMAT('fakt_chpu'[ze_ist], "#,##0.00")
+			    & " | ZE_SOLL=" & FORMAT('fakt_chpu'[ze_soll], "#,##0.00")
+			    & " | ANMIN_IST=" & FORMAT('fakt_chpu'[anmin_ist], "#,##0.00")
+			    & " | ANMIN_SOLL=" & FORMAT('fakt_chpu'[anmin_soll], "#,##0.00")
+			    & " | CHPU_IST=" & FORMAT('fakt_chpu'[chpu_ist], "#,##0.00")
+			    & " | CHPU_SOLL=" & FORMAT('fakt_chpu'[chpu_soll], "#,##0.00")
+			    & " | RATIO_IST=" & FORMAT('fakt_chpu'[ratio_ist], "0.00%")
+			    & " | RATIO_SOLL=" & FORMAT('fakt_chpu'[ratio_soll], "0.00%"),
+			    UNICHAR(10)
+			)
+		lineageTag: eb196d43-18e1-427c-8307-4ebd920bda40
+
+	measure 'Debug Anzahl Zeilen fakt_chpu' = ```
+			
+			COUNTROWS('fakt_chpu')
+			
+			```
+		formatString: 0
+		lineageTag: e19cda23-70b3-4dab-aa37-86e7dda84b90
+
+	measure 'Debug Werke je KW' = ```
+			
+			DISTINCTCOUNT('fakt_chpu'[source_plant_id])
+			
+			```
+		formatString: 0
+		lineageTag: 7305e6f1-f294-444c-b7a2-b175a4e91dca
+
+	measure 'ZE Ist Werk' = ```
+			
+			SUM('fakt_chpu'[ze_ist])
+			
+			```
+		lineageTag: 4dcb1eab-7182-4a2a-9971-ee5967154682
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ZE Soll Werk' = ```
+			
+			SUM('fakt_chpu'[ze_soll])
+			
+			```
+		lineageTag: 7fb2f5ae-9f75-48ea-8853-cd91fb176b7e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist Werk' = ```
+			
+			SUM('fakt_chpu'[anmin_ist])
+			
+			```
+		lineageTag: 53fde90a-5ce3-424e-b631-13eada470872
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll Werk' = ```
+			
+			SUM('fakt_chpu'[anmin_soll])
+			
+			```
+		lineageTag: d5ece9da-5bf5-4a47-b534-17856bb6bc47
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio Werk' = ```
+			
+			SUM('fakt_chpu'[anmin_soll_ohne_ratio])
+			
+			```
+		lineageTag: 1c1a1d65-b422-47be-a494-ce7d131f71b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist Werk' = ```
+			
+			DIVIDE(
+			    [AnMin Ist Werk],
+			    [ZE Ist Werk]
+			)
+			
+			```
+		lineageTag: 4432eb4d-a0cf-4a18-adb2-bfe6bbb4e7b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll Werk' = ```
+			
+			DIVIDE(
+			    [AnMin Soll Werk],
+			    [ZE Soll Werk]
+			)
+			
+			```
+		lineageTag: 591ea5d4-2321-4a10-a52b-f937c6366d19
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll ohne Ratio Werk' = ```
+			
+			DIVIDE(
+			    [AnMin Soll ohne Ratio Werk],
+			    [ZE Soll Werk]
+			)
+			
+			```
+		lineageTag: d3cc2361-7096-4031-8462-d334c5bf8e2b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist Werk berechnet' = ```
+			
+			DIVIDE(
+			    [CHPU Ist Werk] - [CHPU Soll ohne Ratio Werk],
+			    [CHPU Soll ohne Ratio Werk]
+			)
+			
+			```
+		lineageTag: ccccd2d8-f71d-45c7-a603-9e44d199dd3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Soll Werk Quelle' = ```
+			
+			SELECTEDVALUE('fakt_chpu'[ratio_soll])
+			
+			```
+		lineageTag: f6141d08-c289-4458-aff7-f26b133178c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ZE Ist' =
+			
+			SUM('fakt_chpu'[ze_ist])
+		lineageTag: a2620e45-e186-4dac-a862-727d68ebbd35
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ZE Soll' =
+			
+			SUM('fakt_chpu'[ze_soll])
+		lineageTag: 39be09b3-c4b4-4587-bfa9-4e1f3fcf58df
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist' =
+			
+			SUM('fakt_chpu'[anmin_ist])
+		lineageTag: c40c1ee9-5a1f-42e5-95db-de60e63c2618
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll' = ```
+			
+			SUM('fakt_chpu'[anmin_soll])
+			
+			```
+		lineageTag: 886325b2-1693-4bb0-88db-94db3536d28b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio' =
+			
+			SUM('fakt_chpu'[anmin_soll_ohne_ratio])
+		lineageTag: 225f0dba-140d-4513-b785-b2797dc31895
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist' =
+			
+			IF(
+			    [ZE Ist] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Ist],
+			        [ZE Ist]
+			    )
+			)
+		lineageTag: 91b17979-99f9-4aa0-876c-5a9822ef84c4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll' =
+			
+			IF(
+			    [ZE Ist] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Soll],
+			        [ZE Ist]
+			    )
+			)
+		lineageTag: b114a82f-5b2b-4317-b43f-47d065b235f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll ohne Ratio' =
+			
+			IF(
+			    [ZE Ist] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Soll ohne Ratio],
+			        [ZE Ist]
+			    )
+			)
+		lineageTag: 14b0e645-a965-4648-884d-f9e116fbd16b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio] - [CHPU Ist],
+			    [CHPU Soll ohne Ratio]
+			) * 100
+		formatString: 0.00
+		lineageTag: 8d5a0eeb-9405-492c-b804-8ed9a410566e
+
+	measure 'Ratio Soll' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio] - [CHPU Soll],
+			    [CHPU Soll ohne Ratio]
+			) * 100
+		formatString: 0.00
+		lineageTag: e0e4d301-9d64-49e2-8a8c-fecd830235d1
+
+	measure 'Delta Ratio' =
+			
+			[Ratio Ist] - [Ratio Soll]
+		formatString: 0.00
+		lineageTag: 43d87b82-df45-4cc5-b94c-3fe4bde7488e
+
+	measure 'Ampel Gesamt YTD' = ```
+			
+			IF(
+			    ISBLANK([Ratio Ist YTD]) ||
+			    ISBLANK([Ratio Soll YTD]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist YTD] >= [Ratio Soll YTD], "grün",
+			        [Ratio Ist YTD] >= 0, "gelb",
+			        "rot"
+			    )
+			)
+			
+			```
+		lineageTag: 37ceaf09-4f03-49ca-ba16-e8bc5181c159
+
+	measure 'Aktuelles Jahr' = ```
+			
+			INT( MAX('fakt_chpu'[jahr_kw]) / 100 )
+			
+			```
+		formatString: 0
+		lineageTag: dab6772c-5397-4395-a905-76c1fec06011
+
+	measure 'Aktuelle JahrKW' =
+			
+			MAX('fakt_chpu'[jahr_kw])
+		formatString: 0
+		lineageTag: 53ac7b02-61d1-4400-8582-97d3dc572af3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'ZE Ist YTD' = ```
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			
+			RETURN
+			CALCULATE(
+			    [ZE Ist],
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+			
+			```
+		lineageTag: ab634b45-5c64-4699-ba1a-8673a176b44f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Kennzahl
+		lineageTag: 7e2f253c-e62d-4401-9559-cd0d0c81e942
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'ZE Soll YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			
+			RETURN
+			CALCULATE(
+			    [ZE Soll],
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: 51e1bf3c-f9d2-4ff6-b32d-1a56b850af57
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist YTD' = ```
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			
+			RETURN
+			CALCULATE(
+			    [AnMin Ist],
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+			
+			```
+		lineageTag: 08cdf281-3199-4398-8b18-8bc317f52f05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			
+			RETURN
+			CALCULATE(
+			    [AnMin Soll],
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a00844b1-9bd5-445f-a5a0-83c70f715894
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			
+			RETURN
+			CALCULATE(
+			    [AnMin Soll ohne Ratio],
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: 27732c01-ae4c-419a-8375-11c7392eff3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist YTD' =
+			
+			IF(
+			    [ZE Ist YTD] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Ist YTD],
+			        [ZE Ist YTD]
+			    )
+			)
+		lineageTag: 1790f63b-bf08-4e78-ad3d-b2da6627f1cc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll YTD' =
+			
+			IF(
+			    [ZE Ist YTD] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Soll YTD],
+			        [ZE Ist YTD]
+			    )
+			)
+		lineageTag: 2bc80e71-32d6-4c39-b598-32b4a374f8c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll ohne Ratio YTD' =
+			
+			IF(
+			    [ZE Ist YTD] = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [AnMin Soll ohne Ratio YTD],
+			        [ZE Ist YTD]
+			    )
+			)
+		lineageTag: a5f94f58-c837-461f-b422-445cd7356e37
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist YTD' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio YTD] - [CHPU Ist YTD],
+			    [CHPU Soll ohne Ratio YTD]
+			) * 100
+		formatString: 0.00
+		lineageTag: 1dbf4f99-07ed-42d3-98fe-59b3df5d27ce
+
+	measure 'Ratio Soll YTD' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio YTD] - [CHPU Soll YTD],
+			    [CHPU Soll ohne Ratio YTD]
+			) * 100
+		formatString: 0.00
+		lineageTag: b4d3208e-81ee-40ff-b41a-7dca03a90fc2
+
+	measure 'Delta Ratio YTD' =
+			
+			[Ratio Ist YTD] - [Ratio Soll YTD]
+		formatString: 0.00
+		lineageTag: 14e5ea09-2df2-4bdd-a292-43f24f45b0ad
+
+	measure 'Anzahl Werke' =
+			
+			DISTINCTCOUNT('fakt_chpu'[source_plant_id])
+		formatString: 0
+		lineageTag: d4bcda73-6116-4cc9-9608-e07b77a20d7b
+
+	measure 'Ampel Werk YTD' =
+			
+			IF(
+			    ISBLANK([Ratio Ist YTD]) ||
+			    ISBLANK([Ratio Soll YTD]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist YTD] >= [Ratio Soll YTD], "grün",
+			        [Ratio Ist YTD] >= 0, "gelb",
+			        "rot"
+			    )
+			)
+		lineageTag: 0c2a2198-8694-406b-ab78-7efa346265a8
+
+	measure 'Anzahl Werke Grün YTD' =
+			
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES('fakt_chpu'[source_plant_id]),
+			        [Ampel Werk YTD] = "grün"
+			    )
+			) + 0
+		formatString: 0
+		lineageTag: 72001814-4591-4c7a-be9c-d0e95e457435
+
+	measure 'Management Summary Kontext' =
+			
+			
+			VAR _bullet = UNICHAR(8226)
+			
+			RETURN
+			
+			_bullet & " "
+			& FORMAT([Anzahl Werke Grün YTD], "0")
+			& " von "
+			& FORMAT([Anzahl Werke], "0")
+			& " Werken YTD Ist grün"
+			
+			& UNICHAR(10)
+			& UNICHAR(10)
+			
+			& _bullet & " Zielerreichung "
+			& FORMAT([Ratio Ist YTD], "0.0")
+			& "% YTD Ist ("
+			& [Ampel Gesamt YTD]
+			& " | "
+			& FORMAT([Delta Ratio YTD], "+0.0;-0.0;0.0")
+			& "%)"
+			
+			& UNICHAR(10)
+			& UNICHAR(10)
+			
+			& _bullet & " "
+			& FORMAT([Anzahl Werke Grün VSI], "0")
+			& " von "
+			& FORMAT([Anzahl Werke], "0")
+			& " Werken VSI Ist grün"
+			
+			& UNICHAR(10)
+			& UNICHAR(10)
+			
+			& _bullet & " Zielerreichung "
+			& FORMAT([Ratio Ist VSI], "0.0")
+			& "% VSI Ist ("
+			& [Ampel Gesamt VSI]
+			& " | "
+			& FORMAT([Delta Ratio VSI], "+0.0;-0.0;0.0")
+			& "%)"
+		lineageTag: cba4f6ea-6c09-4c6a-aba8-036c0d18938d
+
+	measure 'Management Summary Entscheidungsbedarf' = ```
+			
+			UNICHAR(8226) & " Kenntnisnahme des aktuellen Standes."
+			
+			```
+		lineageTag: 25619776-3c79-4eca-bde2-6907e8efbfcd
+
+	measure 'Ratio Ist YTD Clean' = ```
+			
+			IF(
+			    ABS([Ratio Ist YTD]) > 1,
+			    BLANK(),
+			    [Ratio Ist YTD]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 5ef6f15a-ebc2-47d1-9d8d-fd6f6aa5f114
+
+	/// Aktuelle Kalenderwoche (Zahl)
+	measure 'Aktuelle KW' =
+			
+			MOD( MAX('fakt_chpu'[jahr_kw]), 100 )
+		formatString: 0
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000001
+
+	measure 'AnMin Ist D' =
+			
+			SUM('fakt_chpu'[anmin_ist_d])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000010
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist DI' =
+			
+			SUM('fakt_chpu'[anmin_ist_di])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000011
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist I' =
+			
+			SUM('fakt_chpu'[anmin_ist_i])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000012
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll D' =
+			
+			SUM('fakt_chpu'[anmin_soll_d])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000013
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll DI' =
+			
+			SUM('fakt_chpu'[anmin_soll_di])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000014
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll I' =
+			
+			SUM('fakt_chpu'[anmin_soll_i])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000015
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio D' =
+			
+			SUM('fakt_chpu'[anmin_soll_ohne_ratio_d])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000016
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio DI' =
+			
+			SUM('fakt_chpu'[anmin_soll_ohne_ratio_di])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000017
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio I' =
+			
+			SUM('fakt_chpu'[anmin_soll_ohne_ratio_i])
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000018
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist D' =
+			
+			DIVIDE( [AnMin Ist D], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000020
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist DI' =
+			
+			DIVIDE( [AnMin Ist DI], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000021
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist I' =
+			
+			DIVIDE( [AnMin Ist I], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000022
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll D' =
+			
+			DIVIDE( [AnMin Soll D], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000023
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll DI' =
+			
+			DIVIDE( [AnMin Soll DI], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000024
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll I' =
+			
+			DIVIDE( [AnMin Soll I], [ZE Ist] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000025
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist D' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D], [ZE Ist] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist D], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000030
+
+	measure 'Ratio Ist DI' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI], [ZE Ist] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist DI], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000031
+
+	measure 'Ratio Ist I' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I], [ZE Ist] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist I], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000032
+
+	measure 'Ratio Soll D' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D], [ZE Ist] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll D], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000033
+
+	measure 'Ratio Soll DI' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI], [ZE Ist] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll DI], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000034
+
+	measure 'Ratio Soll I' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I], [ZE Ist] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll I], [ZE Ist] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000035
+
+	measure 'Delta AnMin' =
+			
+			[AnMin Ist] - [AnMin Soll]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000040
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin D' =
+			
+			[AnMin Ist D] - [AnMin Soll D]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000041
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin DI' =
+			
+			[AnMin Ist DI] - [AnMin Soll DI]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000042
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin I' =
+			
+			[AnMin Ist I] - [AnMin Soll I]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000043
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta CHPU' =
+			
+			[CHPU Ist] - [CHPU Soll]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000044
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta ZE' =
+			
+			[ZE Ist] - [ZE Soll]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000045
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin YTD' =
+			
+			[AnMin Ist YTD] - [AnMin Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000046
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta CHPU YTD' =
+			
+			[CHPU Ist YTD] - [CHPU Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000047
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta ZE YTD' =
+			
+			[ZE Ist YTD] - [ZE Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000048
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist Vorwoche' =
+			
+			VAR _aktuelleKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _vorwocheKW =
+			    MAXX(
+			        FILTER(
+			            ALL('fakt_chpu'),
+			            'fakt_chpu'[jahr_kw] < _aktuelleKW
+			        ),
+			        'fakt_chpu'[jahr_kw]
+			    )
+			RETURN
+			CALCULATE(
+			    DIVIDE(
+			        SUM('fakt_chpu'[anmin_ist]),
+			        SUM('fakt_chpu'[ze_ist])
+			    ),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        'fakt_chpu'[jahr_kw] = _vorwocheKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000050
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Trend CHPU' =
+			
+			VAR _diff = [CHPU Ist] - [CHPU Ist Vorwoche]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    ISBLANK([CHPU Ist]) || ISBLANK([CHPU Ist Vorwoche]), BLANK(),
+			    _diff < -0.05, UNICHAR(9660),
+			    _diff > 0.05, UNICHAR(9650),
+			    UNICHAR(9654)
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000051
+
+	measure 'ZE Ist VSI' =
+			
+			[ZE Ist YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000060
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'ZE Soll VSI' =
+			
+			[ZE Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000061
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist VSI' =
+			
+			[AnMin Ist YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000062
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll VSI' =
+			
+			[AnMin Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000063
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio VSI' =
+			
+			[AnMin Soll ohne Ratio YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000064
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist VSI' =
+			
+			[CHPU Ist YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000065
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll VSI' =
+			
+			[CHPU Soll YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000066
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll ohne Ratio VSI' =
+			
+			[CHPU Soll ohne Ratio YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000067
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist VSI' =
+			
+			[Ratio Ist YTD]
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000068
+
+	measure 'Ratio Soll VSI' =
+			
+			[Ratio Soll YTD]
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000069
+
+	measure 'Delta Ratio VSI' =
+			
+			[Ratio Ist VSI] - [Ratio Soll VSI]
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000070
+
+	measure 'Ampel Werk VSI' =
+			
+			IF(
+			    ISBLANK([Ratio Ist VSI]) ||
+			    ISBLANK([Ratio Soll VSI]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist VSI] >= [Ratio Soll VSI], "grün",
+			        [Ratio Ist VSI] >= 0, "gelb",
+			        "rot"
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000071
+
+	measure 'Ampel Gesamt VSI' =
+			
+			IF(
+			    ISBLANK([Ratio Ist VSI]) ||
+			    ISBLANK([Ratio Soll VSI]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist VSI] >= [Ratio Soll VSI], "grün",
+			        [Ratio Ist VSI] >= 0, "gelb",
+			        "rot"
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000072
+
+	measure 'Anzahl Werke Grün VSI' =
+			
+			
+			COUNTROWS(
+			    FILTER(
+			        VALUES('fakt_chpu'[source_plant_id]),
+			        [Ampel Werk VSI] = "grün"
+			    )
+			) + 0
+		formatString: 0
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000073
+
+	measure 'AnMin Ist D YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_ist_d]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000080
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist DI YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_ist_di]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000081
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Ist I YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_ist_i]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000082
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll D YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_d]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000083
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll DI YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_di]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000084
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll I YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_i]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000085
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio D YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_ohne_ratio_d]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000086
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio DI YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_ohne_ratio_di]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000087
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'AnMin Soll ohne Ratio I YTD' =
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			RETURN
+			CALCULATE(
+			    SUM('fakt_chpu'[anmin_soll_ohne_ratio_i]),
+			    FILTER(
+			        ALL('fakt_chpu'),
+			        INT('fakt_chpu'[jahr_kw] / 100) = _jahr &&
+			        'fakt_chpu'[jahr_kw] <= _maxJahrKW
+			    )
+			)
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000088
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist D YTD' =
+			
+			DIVIDE( [AnMin Ist D YTD], [ZE Ist YTD] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000090
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist DI YTD' =
+			
+			DIVIDE( [AnMin Ist DI YTD], [ZE Ist YTD] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000091
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist I YTD' =
+			
+			DIVIDE( [AnMin Ist I YTD], [ZE Ist YTD] )
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000092
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist D YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D YTD], [ZE Ist YTD] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist D YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000093
+
+	measure 'Ratio Ist DI YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI YTD], [ZE Ist YTD] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist DI YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000094
+
+	measure 'Ratio Ist I YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I YTD], [ZE Ist YTD] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist I YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000095
+
+	measure 'Ratio Soll D YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D YTD], [ZE Ist YTD] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll D YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000096
+
+	measure 'Ratio Soll DI YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI YTD], [ZE Ist YTD] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll DI YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000097
+
+	measure 'Ratio Soll I YTD' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I YTD], [ZE Ist YTD] )
+			VAR _chpu_soll = DIVIDE( [AnMin Soll I YTD], [ZE Ist YTD] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000098
+
+	measure 'Delta AnMin D YTD' =
+			
+			[AnMin Ist D YTD] - [AnMin Soll D YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000100
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin DI YTD' =
+			
+			[AnMin Ist DI YTD] - [AnMin Soll DI YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000101
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Delta AnMin I YTD' =
+			
+			[AnMin Ist I YTD] - [AnMin Soll I YTD]
+		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000102
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Debug Ratio Analyse' =
+			
+			
+			VAR _maxJahrKW = MAX('fakt_chpu'[jahr_kw])
+			VAR _jahr = INT(_maxJahrKW / 100)
+			VAR _kw = MOD(_maxJahrKW, 100)
+			VAR _nl = UNICHAR(10)
+			VAR _sep = "═══════════════════════════════════════" & _nl
+			
+			// ── KW-Ebene (aktueller Filterkontext) ──
+			VAR _ze_ist = [ZE Ist]
+			VAR _ze_soll = [ZE Soll]
+			VAR _anmin_ist = [AnMin Ist]
+			VAR _anmin_soll = [AnMin Soll]
+			VAR _anmin_soll_0 = [AnMin Soll ohne Ratio]
+			
+			VAR _chpu_ist = DIVIDE(_anmin_ist, _ze_ist)
+			VAR _chpu_soll_ze_soll = DIVIDE(_anmin_soll, _ze_soll)
+			VAR _chpu_soll_ze_ist = DIVIDE(_anmin_soll, _ze_ist)
+			VAR _chpu_0_ze_soll = DIVIDE(_anmin_soll_0, _ze_soll)
+			VAR _chpu_0_ze_ist = DIVIDE(_anmin_soll_0, _ze_ist)
+			
+			// Ratio über AnMin (ZE kürzt sich raus)
+			VAR _ratio_ist_anmin = DIVIDE(_anmin_soll_0 - _anmin_ist, _anmin_soll_0)
+			VAR _ratio_soll_anmin = DIVIDE(_anmin_soll_0 - _anmin_soll, _anmin_soll_0)
+			
+			// Ratio über CHPU mit ZE Ist
+			VAR _ratio_ist_chpu_ze_ist = DIVIDE(_chpu_0_ze_ist - _chpu_ist, _chpu_0_ze_ist)
+			
+			// Ratio über CHPU mit ZE Soll (so wie aktuell implementiert)
+			VAR _ratio_ist_chpu_ze_soll = DIVIDE(_chpu_0_ze_soll - _chpu_ist, _chpu_0_ze_soll)
+			
+			// Rohdaten-Spalten (Durchschnitt für Plausibilisierung)
+			VAR _raw_ratio_ist = AVERAGE('fakt_chpu'[ratio_ist])
+			VAR _raw_ratio_soll = AVERAGE('fakt_chpu'[ratio_soll])
+			VAR _raw_chpu_ist = AVERAGE('fakt_chpu'[chpu_ist])
+			VAR _raw_chpu_soll = AVERAGE('fakt_chpu'[chpu_soll])
+			VAR _raw_chpu_soll_0 = AVERAGE('fakt_chpu'[chpu_soll_ohne_ratio])
+			
+			// ── YTD-Ebene ──
+			VAR _ze_ist_ytd = [ZE Ist YTD]
+			VAR _ze_soll_ytd = [ZE Soll YTD]
+			VAR _anmin_ist_ytd = [AnMin Ist YTD]
+			VAR _anmin_soll_ytd = [AnMin Soll YTD]
+			VAR _anmin_soll_0_ytd = [AnMin Soll ohne Ratio YTD]
+			
+			VAR _chpu_ist_ytd = DIVIDE(_anmin_ist_ytd, _ze_ist_ytd)
+			VAR _chpu_soll_ytd_ze_ist = DIVIDE(_anmin_soll_ytd, _ze_ist_ytd)
+			VAR _chpu_0_ytd_ze_ist = DIVIDE(_anmin_soll_0_ytd, _ze_ist_ytd)
+			
+			VAR _ratio_ist_ytd_anmin = DIVIDE(_anmin_soll_0_ytd - _anmin_ist_ytd, _anmin_soll_0_ytd)
+			VAR _ratio_soll_ytd_anmin = DIVIDE(_anmin_soll_0_ytd - _anmin_soll_ytd, _anmin_soll_0_ytd)
+			
+			// ── Kategorie-Splits KW ──
+			VAR _anmin_ist_d = SUM('fakt_chpu'[anmin_ist_d])
+			VAR _anmin_ist_di = SUM('fakt_chpu'[anmin_ist_di])
+			VAR _anmin_ist_i = SUM('fakt_chpu'[anmin_ist_i])
+			VAR _anmin_soll_d = SUM('fakt_chpu'[anmin_soll_d])
+			VAR _anmin_soll_di = SUM('fakt_chpu'[anmin_soll_di])
+			VAR _anmin_soll_i = SUM('fakt_chpu'[anmin_soll_i])
+			
+			// ── Anzahl Zeilen ──
+			VAR _rows = COUNTROWS('fakt_chpu')
+			VAR _werke = DISTINCTCOUNT('fakt_chpu'[source_plant_id])
+			
+			RETURN
+			
+			"╔═ KONTEXT ═════════════════════════════" & _nl
+			& "║ MaxJahrKW: " & FORMAT(_maxJahrKW, "0") & " (Jahr=" & FORMAT(_jahr,"0") & " KW=" & FORMAT(_kw,"0") & ")" & _nl
+			& "║ Zeilen: " & FORMAT(_rows, "0") & " | Werke: " & FORMAT(_werke, "0") & _nl
+			& _sep
+			
+			& "╔═ ROHDATEN-SPALTEN (AVG je Zeile) ═══" & _nl
+			& "║ ratio_ist (AVG):           " & FORMAT(_raw_ratio_ist, "0.0000") & _nl
+			& "║ ratio_soll (AVG):          " & FORMAT(_raw_ratio_soll, "0.0000") & _nl
+			& "║ chpu_ist (AVG):            " & FORMAT(_raw_chpu_ist, "0.00") & _nl
+			& "║ chpu_soll (AVG):           " & FORMAT(_raw_chpu_soll, "0.00") & _nl
+			& "║ chpu_soll_ohne_ratio (AVG):" & FORMAT(_raw_chpu_soll_0, "0.00") & _nl
+			& _sep
+			
+			& "╔═ KW-EBENE (aggregiert) ════════════" & _nl
+			& "║ ZE Ist:        " & FORMAT(_ze_ist, "#,##0.00") & _nl
+			& "║ ZE Soll:       " & FORMAT(_ze_soll, "#,##0.00") & _nl
+			& "║ Delta ZE:      " & FORMAT(_ze_ist - _ze_soll, "+#,##0.00;-#,##0.00;0") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ AnMin Ist:      " & FORMAT(_anmin_ist, "#,##0.00") & _nl
+			& "║ AnMin Soll:     " & FORMAT(_anmin_soll, "#,##0.00") & _nl
+			& "║ AnMin Soll 0%:  " & FORMAT(_anmin_soll_0, "#,##0.00") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ AnMin Ist D:    " & FORMAT(_anmin_ist_d, "#,##0.00") & _nl
+			& "║ AnMin Ist DI:   " & FORMAT(_anmin_ist_di, "#,##0.00") & _nl
+			& "║ AnMin Ist I:    " & FORMAT(_anmin_ist_i, "#,##0.00") & _nl
+			& "║ Summe D+DI+I:   " & FORMAT(_anmin_ist_d + _anmin_ist_di + _anmin_ist_i, "#,##0.00") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ AnMin Soll D:   " & FORMAT(_anmin_soll_d, "#,##0.00") & _nl
+			& "║ AnMin Soll DI:  " & FORMAT(_anmin_soll_di, "#,##0.00") & _nl
+			& "║ AnMin Soll I:   " & FORMAT(_anmin_soll_i, "#,##0.00") & _nl
+			& "║ Summe D+DI+I:   " & FORMAT(_anmin_soll_d + _anmin_soll_di + _anmin_soll_i, "#,##0.00") & _nl
+			& _sep
+			
+			& "╔═ CHPU VERGLEICH ═══════════════════" & _nl
+			& "║ CHPU Ist (AnMin/ZE_Ist):        " & FORMAT(_chpu_ist, "0.0000") & _nl
+			& "║ CHPU Soll (AnMin_S/ZE_Soll):    " & FORMAT(_chpu_soll_ze_soll, "0.0000") & _nl
+			& "║ CHPU Soll (AnMin_S/ZE_Ist):     " & FORMAT(_chpu_soll_ze_ist, "0.0000") & _nl
+			& "║ CHPU 0% (AnMin_0/ZE_Soll):      " & FORMAT(_chpu_0_ze_soll, "0.0000") & _nl
+			& "║ CHPU 0% (AnMin_0/ZE_Ist):       " & FORMAT(_chpu_0_ze_ist, "0.0000") & _nl
+			& _sep
+			
+			& "╔═ RATIO KW – ALLE VARIANTEN ═══════" & _nl
+			& "║ Rohdaten (AVG):                  " & FORMAT(_raw_ratio_ist, "0.0000") & _nl
+			& "║ AnMin-basiert:                   " & FORMAT(_ratio_ist_anmin, "0.0000") & _nl
+			& "║ CHPU-basiert (ZE_Ist):           " & FORMAT(_ratio_ist_chpu_ze_ist, "0.0000") & _nl
+			& "║ CHPU-basiert (ZE_Soll):          " & FORMAT(_ratio_ist_chpu_ze_soll, "0.0000") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ Ratio Soll Rohdaten (AVG):       " & FORMAT(_raw_ratio_soll, "0.0000") & _nl
+			& "║ Ratio Soll AnMin-basiert:        " & FORMAT(_ratio_soll_anmin, "0.0000") & _nl
+			& _sep
+			
+			& "╔═ YTD-EBENE ════════════════════════" & _nl
+			& "║ ZE Ist YTD:     " & FORMAT(_ze_ist_ytd, "#,##0.00") & _nl
+			& "║ ZE Soll YTD:    " & FORMAT(_ze_soll_ytd, "#,##0.00") & _nl
+			& "║ AnMin Ist YTD:   " & FORMAT(_anmin_ist_ytd, "#,##0.00") & _nl
+			& "║ AnMin Soll YTD:  " & FORMAT(_anmin_soll_ytd, "#,##0.00") & _nl
+			& "║ AnMin Soll 0% YTD:" & FORMAT(_anmin_soll_0_ytd, "#,##0.00") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ CHPU Ist YTD:                    " & FORMAT(_chpu_ist_ytd, "0.0000") & _nl
+			& "║ CHPU Soll YTD (ZE_Ist):         " & FORMAT(_chpu_soll_ytd_ze_ist, "0.0000") & _nl
+			& "║ CHPU 0% YTD (ZE_Ist):           " & FORMAT(_chpu_0_ytd_ze_ist, "0.0000") & _nl
+			& "║ ────────────────────────────────" & _nl
+			& "║ Ratio Ist YTD (AnMin):           " & FORMAT(_ratio_ist_ytd_anmin, "0.0000") & _nl
+			& "║ Ratio Soll YTD (AnMin):          " & FORMAT(_ratio_soll_ytd_anmin, "0.0000") & _nl
+			& _sep
+			
+			& "╔═ PLAUSIBILISIERUNG ════════════════" & _nl
+			& "║ AnMin Ist = D+DI+I?  " & IF(ABS(_anmin_ist - (_anmin_ist_d + _anmin_ist_di + _anmin_ist_i)) < 1, "✓ JA", "✗ NEIN (Diff=" & FORMAT(_anmin_ist - (_anmin_ist_d + _anmin_ist_di + _anmin_ist_i), "#,##0.00") & ")") & _nl
+			& "║ AnMin Soll = D+DI+I? " & IF(ABS(_anmin_soll - (_anmin_soll_d + _anmin_soll_di + _anmin_soll_i)) < 1, "✓ JA", "✗ NEIN (Diff=" & FORMAT(_anmin_soll - (_anmin_soll_d + _anmin_soll_di + _anmin_soll_i), "#,##0.00") & ")") & _nl
+			& "║ ZE Ist = ZE Soll?    " & IF(ABS(_ze_ist - _ze_soll) < 0.01, "✓ JA (identisch)", "✗ NEIN (Delta=" & FORMAT(_ze_ist - _ze_soll, "+#,##0.00;-#,##0.00") & ")") & _nl
+			& "║ Ratio Skala:          " & IF(ABS(_raw_ratio_ist) > 1, "PROZENT (z.B. 5.0)", IF(ABS(_raw_ratio_ist) > 0, "DEZIMAL (z.B. 0.05)", "NULL/BLANK")) & _nl
+			& "╚════════════════════════════════════"
+		lineageTag: 2994a7b5-8f63-46cb-b40c-8ac548620fcf
+
+	measure 'Debug Einzelzeile v2' =
+			
+			
+			VAR _nl = UNICHAR(10)
+			
+			VAR _rows =
+			    TOPN(
+			        3,
+			        FILTER('fakt_chpu', 'fakt_chpu'[ze_ist] > 0),
+			        'fakt_chpu'[jahr_kw], DESC,
+			        'fakt_chpu'[source_plant_id], ASC
+			    )
+			
+			RETURN
+			CONCATENATEX(
+			    _rows,
+			    "══ " & 'fakt_chpu'[source_plant_id] & " | KW=" & 'fakt_chpu'[jahr_kw] & " ══" & _nl
+			    & "anmin_ist:       " & FORMAT('fakt_chpu'[anmin_ist], "#,##0.00") & _nl
+			    & "anmin_ist_d:     " & FORMAT('fakt_chpu'[anmin_ist_d], "#,##0.00") & _nl
+			    & "anmin_ist_di:    " & FORMAT('fakt_chpu'[anmin_ist_di], "#,##0.00") & _nl
+			    & "anmin_ist_i:     " & FORMAT('fakt_chpu'[anmin_ist_i], "#,##0.00") & _nl
+			    & "anmin_ist_d_di:  " & FORMAT('fakt_chpu'[anmin_ist_d_di], "#,##0.00") & _nl
+			    & "D+DI+I:          " & FORMAT('fakt_chpu'[anmin_ist_d] + 'fakt_chpu'[anmin_ist_di] + 'fakt_chpu'[anmin_ist_i], "#,##0.00") & _nl
+			    & "D_DI + I:        " & FORMAT('fakt_chpu'[anmin_ist_d_di] + 'fakt_chpu'[anmin_ist_i], "#,##0.00") & _nl
+			    & "──────────────────────────" & _nl
+			    & "anmin_soll:      " & FORMAT('fakt_chpu'[anmin_soll], "#,##0.00") & _nl
+			    & "anmin_soll_d:    " & FORMAT('fakt_chpu'[anmin_soll_d], "#,##0.00") & _nl
+			    & "anmin_soll_di:   " & FORMAT('fakt_chpu'[anmin_soll_di], "#,##0.00") & _nl
+			    & "anmin_soll_i:    " & FORMAT('fakt_chpu'[anmin_soll_i], "#,##0.00") & _nl
+			    & "anmin_soll_0:    " & FORMAT('fakt_chpu'[anmin_soll_ohne_ratio], "#,##0.00") & _nl
+			    & "D+DI+I Soll:     " & FORMAT('fakt_chpu'[anmin_soll_d] + 'fakt_chpu'[anmin_soll_di] + 'fakt_chpu'[anmin_soll_i], "#,##0.00") & _nl
+			    & "──────────────────────────" & _nl
+			    & "ze_ist:          " & FORMAT('fakt_chpu'[ze_ist], "#,##0.00") & _nl
+			    & "ze_soll:         " & FORMAT('fakt_chpu'[ze_soll], "#,##0.00") & _nl
+			    & "──────────────────────────" & _nl
+			    & "chpu_ist (Spalte):   " & FORMAT('fakt_chpu'[chpu_ist], "0.0000") & _nl
+			    & "chpu_soll (Spalte):  " & FORMAT('fakt_chpu'[chpu_soll], "0.0000") & _nl
+			    & "chpu_0 (Spalte):     " & FORMAT('fakt_chpu'[chpu_soll_ohne_ratio], "0.0000") & _nl
+			    & "ratio_ist (Spalte):  " & FORMAT('fakt_chpu'[ratio_ist], "0.0000") & _nl
+			    & "ratio_soll (Spalte): " & FORMAT('fakt_chpu'[ratio_soll], "0.0000") & _nl
+			    & "──────────────────────────" & _nl
+			    & "anmin_ist/ze_ist:    " & FORMAT(DIVIDE('fakt_chpu'[anmin_ist], 'fakt_chpu'[ze_ist]), "0.0000") & _nl
+			    & "d_di+i / ze_ist:     " & FORMAT(DIVIDE('fakt_chpu'[anmin_ist_d_di] + 'fakt_chpu'[anmin_ist_i], 'fakt_chpu'[ze_ist]), "0.0000") & _nl
+			    & "anmin_soll/ze_soll:  " & FORMAT(DIVIDE('fakt_chpu'[anmin_soll], 'fakt_chpu'[ze_soll]), "0.0000") & _nl
+			    & "ratio check (0-ist)/0 *100: " & FORMAT(
+			          DIVIDE(
+			              'fakt_chpu'[chpu_soll_ohne_ratio] - 'fakt_chpu'[chpu_ist],
+			              'fakt_chpu'[chpu_soll_ohne_ratio]
+			          ) * 100, "0.0000") & _nl
+			    ,
+			    _nl
+			)
+		lineageTag: a9692baa-8393-4a49-9472-08a089e8c697
+
+	column source_plant_id
+		dataType: string
+		lineageTag: fca0974b-75ce-4f0d-a874-d4986b9255f4
+		summarizeBy: none
+		sourceColumn: source_plant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column jahr_kw
+		dataType: int64
+		formatString: 0
+		lineageTag: 40e0e87c-c6cb-4f4d-ab58-0825c9245190
+		summarizeBy: none
+		sourceColumn: jahr_kw
+
+		annotation SummarizationSetBy = User
+
+	column ratio_soll_i
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9b858ac8-da8a-4997-b802-da0c6c48f033
+		summarizeBy: none
+		sourceColumn: ratio_soll_i
+
+		annotation SummarizationSetBy = User
+
+	column ratio_soll_d
+		dataType: double
+		formatString: 0.00
+		lineageTag: b080e1bc-f69d-4b09-94c1-3aba5a673b75
+		summarizeBy: none
+		sourceColumn: ratio_soll_d
+
+		annotation SummarizationSetBy = User
+
+	column ratio_soll_di
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0b14db1f-d171-4ac5-b4a5-518657e22700
+		summarizeBy: none
+		sourceColumn: ratio_soll_di
+
+		annotation SummarizationSetBy = User
+
+	column anmin_soll_i
+		dataType: double
+		lineageTag: 022f165e-2040-4afb-a9da-7386bb04b729
+		summarizeBy: sum
+		sourceColumn: anmin_soll_i
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_di
+		dataType: double
+		lineageTag: d2feb0d3-f899-4101-b782-33ffea6ed5ba
+		summarizeBy: sum
+		sourceColumn: anmin_soll_di
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_d
+		dataType: double
+		lineageTag: 4ad57ba2-6866-4195-b6d2-40a1aa845b6e
+		summarizeBy: sum
+		sourceColumn: anmin_soll_d
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ze_soll
+		dataType: double
+		formatString: 0
+		lineageTag: 47e7aad9-0650-41e5-9198-863c4a0a18a7
+		summarizeBy: sum
+		sourceColumn: ze_soll
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column ze_ist
+		dataType: double
+		formatString: 0
+		lineageTag: 79ea3f97-05d3-490a-a4aa-2c83c78d54c4
+		summarizeBy: sum
+		sourceColumn: ze_ist
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column anmin_ist_i
+		dataType: double
+		lineageTag: e71ab745-0b5d-4660-af65-1deb6ac3d9b5
+		summarizeBy: sum
+		sourceColumn: anmin_ist_i
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_ist_d_di
+		dataType: double
+		formatString: 0
+		lineageTag: 8b0f49ee-39d7-40e0-99a1-cf189d36f27f
+		summarizeBy: sum
+		sourceColumn: anmin_ist_d_di
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column anmin_ist_d
+		dataType: double
+		formatString: 0
+		lineageTag: 793a075d-51e1-4bcf-a702-90ff18f3d352
+		summarizeBy: sum
+		sourceColumn: anmin_ist_d
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column anmin_ist_di
+		dataType: double
+		lineageTag: c42f615b-ed03-49fe-b44a-40bc2a4678c1
+		summarizeBy: sum
+		sourceColumn: anmin_ist_di
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll
+		dataType: double
+		lineageTag: 64cd593e-e946-4fbd-83e3-30620e86c974
+		summarizeBy: sum
+		sourceColumn: anmin_soll
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_ist
+		dataType: double
+		formatString: 0
+		lineageTag: 76c829f6-e956-47d7-b360-0cae818ec981
+		summarizeBy: sum
+		sourceColumn: anmin_ist
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column anmin_soll_ohne_ratio_d
+		dataType: double
+		lineageTag: b174e8c5-6316-40e7-a158-d1d83cb6cb24
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ohne_ratio_d
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_ohne_ratio_di
+		dataType: double
+		lineageTag: 094e1d2c-0176-4983-bdf8-119e96818ac8
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ohne_ratio_di
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_ohne_ratio_i
+		dataType: double
+		lineageTag: d289553c-d8c0-4a18-a4a1-34d2ffe9a4b2
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ohne_ratio_i
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_ohne_ratio
+		dataType: double
+		lineageTag: 6a171ff1-6450-415b-bbc8-ae05c801fa39
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ohne_ratio
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ratio_ist_d
+		dataType: double
+		formatString: 0.00
+		lineageTag: d259f2f9-c33e-47cd-8dd6-b51e3f08d9f6
+		summarizeBy: none
+		sourceColumn: ratio_ist_d
+
+		annotation SummarizationSetBy = User
+
+	column ratio_ist_di
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1c8c2048-d7fa-45fa-acbf-b18d1b726ed2
+		summarizeBy: none
+		sourceColumn: ratio_ist_di
+
+		annotation SummarizationSetBy = User
+
+	column ratio_ist_i
+		dataType: double
+		formatString: 0.00
+		lineageTag: 1c0f9b15-c702-40f4-bcb4-ab37faeed165
+		summarizeBy: none
+		sourceColumn: ratio_ist_i
+
+		annotation SummarizationSetBy = User
+
+	column ratio_ist
+		dataType: double
+		formatString: 0.00
+		lineageTag: d8118076-7441-43ac-9e1a-4a6ab729e139
+		summarizeBy: none
+		sourceColumn: ratio_ist
+
+		annotation SummarizationSetBy = User
+
+	column chpu_ist_d
+		dataType: double
+		lineageTag: 2529445d-8c67-4a8d-8a25-97cd8b6d7c0b
+		summarizeBy: none
+		sourceColumn: chpu_ist_d
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_ist_di
+		dataType: double
+		lineageTag: f7370ffa-56d1-4c5d-abc1-b5424ded87e1
+		summarizeBy: none
+		sourceColumn: chpu_ist_di
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_ist_i
+		dataType: double
+		lineageTag: 9b047e9b-cfc0-442f-ae7f-7622cda9e573
+		summarizeBy: none
+		sourceColumn: chpu_ist_i
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_ist
+		dataType: double
+		lineageTag: 95f1362b-62a0-4a07-aa45-c4daffb2212c
+		summarizeBy: none
+		sourceColumn: chpu_ist
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_soll
+		dataType: double
+		lineageTag: 5fc1644a-b708-4f70-96d3-5e73559c4e3e
+		summarizeBy: none
+		sourceColumn: chpu_soll
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ratio_soll
+		dataType: double
+		formatString: 0.00
+		lineageTag: a7d3c322-f9dc-4064-b367-661ddfcb17ec
+		summarizeBy: none
+		sourceColumn: ratio_soll
+
+		annotation SummarizationSetBy = User
+
+	column chpu_soll_ohne_ratio
+		dataType: double
+		lineageTag: 29073038-35ac-4e68-9dec-a2156e9913d2
+		summarizeBy: none
+		sourceColumn: chpu_soll_ohne_ratio
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fakt_chpu = m
+		mode: import
+		source =
+				let
+				  Quelle = PowerPlatform.Dataflows([]),
+				  #"Navigation 1" = Quelle{[Id = "Workspaces"]}[Data],
+				  #"Navigation 2" = #"Navigation 1"{[workspaceId = "c5f886de-fae0-47a0-a39c-88802ced5740"]}[Data],
+				  #"Navigation 3" = #"Navigation 2"{[dataflowId = "f86c3ce9-edc9-4f19-a809-f03028f2103b"]}[Data],
+				  #"Navigation 4" = #"Navigation 3"{[entity = "fakt_chpu", version = ""]}[Data]
+				in
+				  #"Navigation 4"
+
+	annotation PBI_ResultType = Table
+
