@@ -1,10 +1,10 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
   "name": "5630f935c1dc5ba58789",
-  "displayName": "Abwecihungsanalyse DE Direkt",
+  "displayName": "Abweichungsanalyse DE Direkt",
   "displayOption": "FitToPage",
-  "height": 720,
-  "width": 1280,
+  "height": 1080,
+  "width": 1920,
   "objects": {
     "background": [
       {
