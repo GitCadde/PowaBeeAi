@@ -604,6 +604,129 @@ table fakt_chpu
 			)
 		lineageTag: a1b2c3d4-1001-4aaa-b001-000000000051
 
+	/// Hex-Farbe für bedingte Formatierung (Field value)
+	measure 'Ampel Farbe YTD' =
+			
+			SWITCH(
+			    [Ampel Gesamt YTD],
+			    "grün", "#00A650",
+			    "gelb", "#FFB800",
+			    "rot", "#E63946",
+			    BLANK()
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000101
+
+	measure 'Ampel Farbe VSI' =
+			
+			SWITCH(
+			    [Ampel Gesamt VSI],
+			    "grün", "#00A650",
+			    "gelb", "#FFB800",
+			    "rot", "#E63946",
+			    BLANK()
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000102
+
+	measure 'Trend Farbe CHPU' =
+			
+			SWITCH(
+			    [Trend CHPU],
+			    UNICHAR(9660), "#00A650",
+			    UNICHAR(9650), "#E63946",
+			    UNICHAR(9654), "#808080",
+			    BLANK()
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000103
+
+	/// Negatives Delta (weniger AnMin als Soll) = gut = grün
+	measure 'Delta Farbe AnMin' =
+			
+			IF(
+			    ISBLANK([Delta AnMin]),
+			    BLANK(),
+			    IF( [Delta AnMin] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000104
+
+	measure 'Delta Farbe AnMin D' =
+			
+			IF(
+			    ISBLANK([Delta AnMin D]),
+			    BLANK(),
+			    IF( [Delta AnMin D] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000105
+
+	measure 'Delta Farbe AnMin DI' =
+			
+			IF(
+			    ISBLANK([Delta AnMin DI]),
+			    BLANK(),
+			    IF( [Delta AnMin DI] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000106
+
+	measure 'Delta Farbe AnMin I' =
+			
+			IF(
+			    ISBLANK([Delta AnMin I]),
+			    BLANK(),
+			    IF( [Delta AnMin I] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000107
+
+	/// Positives ZE-Delta (mehr Leistung als Soll) = gut = grün
+	measure 'Delta Farbe ZE YTD' =
+			
+			IF(
+			    ISBLANK([Delta ZE YTD]),
+			    BLANK(),
+			    IF( [Delta ZE YTD] >= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000108
+
+	measure 'Ratio Farbe YTD' =
+			
+			IF(
+			    ISBLANK([Ratio Ist YTD]) || ISBLANK([Ratio Soll YTD]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist YTD] >= [Ratio Soll YTD], "#00A650",
+			        [Ratio Ist YTD] >= 0, "#FFB800",
+			        "#E63946"
+			    )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000109
+
+	measure 'Ratio Farbe VSI' =
+			
+			IF(
+			    ISBLANK([Ratio Ist VSI]) || ISBLANK([Ratio Soll VSI]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist VSI] >= [Ratio Soll VSI], "#00A650",
+			        [Ratio Ist VSI] >= 0, "#FFB800",
+			        "#E63946"
+			    )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000110
+
+	measure 'Ratio Farbe KW' =
+			
+			IF(
+			    ISBLANK([Ratio Ist]) || ISBLANK([Ratio Soll]),
+			    BLANK(),
+			    SWITCH(
+			        TRUE(),
+			        [Ratio Ist] >= [Ratio Soll], "#00A650",
+			        [Ratio Ist] >= 0, "#FFB800",
+			        "#E63946"
+			    )
+			)
+		lineageTag: c1d2e3f4-3001-4ccc-b001-000000000111
+
 	measure 'Management Summary Kontext' =
 			
 			VAR _bullet = UNICHAR(8226)

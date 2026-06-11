@@ -362,6 +362,37 @@ table fakt_chpu_kst
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000039
 
+	/// Hex-Farbe für bedingte Formatierung (Field value)
+	measure 'Ampel Farbe KST YTD' =
+			
+			SWITCH(
+			    [Ampel KST YTD],
+			    "grün", "#00A650",
+			    "gelb", "#FFB800",
+			    "rot", "#E63946",
+			    BLANK()
+			)
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000101
+
+	/// Negatives Delta (weniger AnMin als Soll) = gut = grün
+	measure 'Delta Farbe AnMin KST' =
+			
+			IF(
+			    ISBLANK([Delta AnMin KST]),
+			    BLANK(),
+			    IF( [Delta AnMin KST] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000102
+
+	measure 'Delta Farbe CHPU KST' =
+			
+			IF(
+			    ISBLANK([Delta CHPU KST]),
+			    BLANK(),
+			    IF( [Delta CHPU KST] <= 0, "#00A650", "#E63946" )
+			)
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000103
+
 	column source_plant_id
 		dataType: string
 		lineageTag: b6f1657b-7920-431c-9d30-ad585001b2e6

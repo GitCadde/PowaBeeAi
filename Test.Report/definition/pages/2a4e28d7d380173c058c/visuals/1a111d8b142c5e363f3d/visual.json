@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "63b1f4c9a28447699c34",
+  "name": "1a111d8b142c5e363f3d",
   "position": {
     "x": 552,
-    "y": 340,
-    "z": 8,
-    "height": 176,
-    "width": 1340,
-    "tabOrder": 8
+    "y": 108,
+    "z": 20,
+    "height": 144,
+    "width": 420,
+    "tabOrder": 20
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "fakt_chpu"
                     }
                   },
-                  "Property": "Management Summary Kontext"
+                  "Property": "Anzahl Werke Grün YTD"
                 }
               },
-              "queryRef": "fakt_chpu.Management Summary Kontext",
-              "nativeQueryRef": "Management Summary Kontext"
+              "queryRef": "fakt_chpu.Anzahl Werke Grün YTD",
+              "nativeQueryRef": "Anzahl Werke Grün YTD"
             }
           ]
         }
@@ -82,26 +82,33 @@
           }
         }
       ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
       "value": [
         {
           "properties": {
-            "textWrap": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "Ampel Farbe YTD"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "28D"
+                }
+              }
+            },
+            "bold": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -115,24 +122,42 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4ecb5df0c6adbd24d0a7",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "fakt_chpu"
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
               }
             },
-            "Property": "Management Summary Kontext"
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Werke grün YTD'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
-        },
-        "type": "Advanced"
-      }
-    ]
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
   }
 }
