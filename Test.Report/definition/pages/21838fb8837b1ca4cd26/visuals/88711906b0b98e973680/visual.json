@@ -196,6 +196,79 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "Delta Farbe AnMin KST"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu_kst.Delta AnMin KST"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "Delta Farbe CHPU KST"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu_kst.Delta CHPU KST"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu_kst"
+                        }
+                      },
+                      "Property": "Ampel Farbe KST YTD"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu_kst.Ampel KST YTD"
+          }
+        }
+      ]
+    }
   }
 }

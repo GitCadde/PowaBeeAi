@@ -109,7 +109,12 @@
         }
       ]
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "syncGroup": {
+      "groupName": "Sync_KW",
+      "fieldChanges": true,
+      "filterChanges": true
+    }
   },
   "filterConfig": {
     "filters": [

@@ -61,7 +61,34 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "Delta Farbe ZE YTD"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Delta ZE YTD"
+          }
+        }
+      ]
+    }
   },
   "filterConfig": {
     "filters": [

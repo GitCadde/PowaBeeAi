@@ -136,7 +136,34 @@
         }
       }
     },
-    "drillFilterOtherVisuals": true
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fakt_chpu"
+                        }
+                      },
+                      "Property": "Delta Farbe AnMin D"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Delta AnMin D"
+          }
+        }
+      ]
+    }
   },
   "filterConfig": {
     "filters": [
