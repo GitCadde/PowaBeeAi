@@ -1,34 +1,6 @@
 table fakt_chpu_kst
 	lineageTag: e763f5b3-c0cb-46f8-ad58-d17343cd8446
 
-	measure 'Debug Rohdaten fakt_chpu_kst' =
-			
-			VAR _rows =
-			    TOPN(
-			        50,
-			        'fakt_chpu_kst',
-			        'fakt_chpu_kst'[jahr_kw], ASC,
-			        'fakt_chpu_kst'[source_plant_id], ASC,
-			        'fakt_chpu_kst'[kst_bezeichnung_kurz], ASC
-			    )
-			RETURN
-			CONCATENATEX(
-			    _rows,
-			    "KW=" & COALESCE('fakt_chpu_kst'[jahr_kw], "∅")
-			    & " | Werk=" & COALESCE('fakt_chpu_kst'[source_plant_id], "∅")
-			    & " | KST=" & COALESCE('fakt_chpu_kst'[kst_bezeichnung_kurz], "∅")
-			    & " | ZE_IST=" & FORMAT('fakt_chpu_kst'[ze_ist], "#,##0.00")
-			    & " | ZE_SOLL=" & FORMAT('fakt_chpu_kst'[ze_soll], "#,##0.00")
-			    & " | ANMIN_IST=" & FORMAT('fakt_chpu_kst'[anmin_ist], "#,##0.00")
-			    & " | ANMIN_SOLL=" & FORMAT('fakt_chpu_kst'[anmin_soll], "#,##0.00")
-			    & " | CHPU_IST=" & FORMAT('fakt_chpu_kst'[chpu_ist], "#,##0.00")
-			    & " | CHPU_SOLL=" & FORMAT('fakt_chpu_kst'[chpu_soll], "#,##0.00")
-			    & " | RATIO_IST=" & FORMAT('fakt_chpu_kst'[ratio_ist], "0.00%")
-			    & " | RATIO_SOLL=" & FORMAT('fakt_chpu_kst'[ratio_soll], "0.00%"),
-			    UNICHAR(10)
-			)
-		lineageTag: a3bf5248-933f-49b1-b2d1-6152f333d811
-
 	measure 'Debug Anzahl Zeilen fakt_chpu_kst' =
 			
 			COUNTROWS('fakt_chpu_kst')
@@ -79,87 +51,6 @@ table fakt_chpu_kst
 		lineageTag: 00ce4627-464a-476a-948a-c8922ee6f05c
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'CHPU Ist KST' = ```
-			
-			DIVIDE(
-			    [AnMin Ist KST],
-			    [ZE Ist KST]
-			)
-			
-			```
-		lineageTag: 357463ab-1333-4018-90e6-0e9100a68511
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'CHPU Soll KST' = ```
-			
-			DIVIDE(
-			    [AnMin Soll KST],
-			    [ZE Ist KST]
-			)
-			
-			```
-		lineageTag: 4f1b6b9d-b838-45bc-9ded-308893c7963a
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'CHPU Soll ohne Ratio KST' = ```
-			
-			DIVIDE(
-			    [AnMin Soll ohne Ratio KST],
-			    [ZE Ist KST]
-			)
-			
-			```
-		lineageTag: 84034f1b-75ca-4fc0-914d-a41f19a5588a
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Ratio Ist KST berechnet' = ```
-			
-			DIVIDE(
-			    [CHPU Ist KST] - [CHPU Soll ohne Ratio KST],
-			    [CHPU Soll ohne Ratio KST]
-			)
-			
-			```
-		lineageTag: 0548f572-317a-4fff-adda-9638e7281a48
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Ratio Soll KST Quelle' = ```
-			
-			SELECTEDVALUE('fakt_chpu_kst'[ratio_soll])
-			
-			```
-		lineageTag: 767a1c9b-4347-4ae0-8c5e-c7162c4e7c0d
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Ratio Ist KST' =
-			
-			DIVIDE(
-			    [CHPU Soll ohne Ratio KST] - [CHPU Ist KST],
-			    [CHPU Soll ohne Ratio KST]
-			) * 100
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000001
-
-	measure 'Ratio Soll KST' =
-			
-			DIVIDE(
-			    [CHPU Soll ohne Ratio KST] - [CHPU Soll KST],
-			    [CHPU Soll ohne Ratio KST]
-			) * 100
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000002
-
-	measure 'Delta Ratio KST' =
-			
-			[Ratio Ist KST] - [Ratio Soll KST]
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000003
 
 	measure 'AnMin Ist D KST' =
 			
@@ -224,6 +115,114 @@ table fakt_chpu_kst
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'CHPU Ist KST' = ```
+			
+			DIVIDE(
+			    [AnMin Ist KST],
+			    [ZE Ist KST]
+			)
+			
+			```
+		lineageTag: 357463ab-1333-4018-90e6-0e9100a68511
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll KST' = ```
+			
+			DIVIDE(
+			    [AnMin Soll KST],
+			    [ZE Ist KST]
+			)
+			
+			```
+		lineageTag: 4f1b6b9d-b838-45bc-9ded-308893c7963a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Soll ohne Ratio KST' = ```
+			
+			DIVIDE(
+			    [AnMin Soll ohne Ratio KST],
+			    [ZE Ist KST]
+			)
+			
+			```
+		lineageTag: 84034f1b-75ca-4fc0-914d-a41f19a5588a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist D KST' =
+			
+			DIVIDE( [AnMin Ist D KST], [ZE Ist KST] )
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000053
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist DI KST' =
+			
+			DIVIDE( [AnMin Ist DI KST], [ZE Ist KST] )
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000054
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CHPU Ist I KST' =
+			
+			DIVIDE( [AnMin Ist I KST], [ZE Ist KST] )
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000055
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Ratio Ist KST' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio KST] - [CHPU Ist KST],
+			    [CHPU Soll ohne Ratio KST]
+			) * 100
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000001
+
+	measure 'Ratio Soll KST' =
+			
+			DIVIDE(
+			    [CHPU Soll ohne Ratio KST] - [CHPU Soll KST],
+			    [CHPU Soll ohne Ratio KST]
+			) * 100
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000002
+
+	measure 'Delta Ratio KST' =
+			
+			[Ratio Ist KST] - [Ratio Soll KST]
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000003
+
+	measure 'Ratio Ist D KST' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D KST], [ZE Ist KST] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist D KST], [ZE Ist KST] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000050
+
+	measure 'Ratio Ist DI KST' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI KST], [ZE Ist KST] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist DI KST], [ZE Ist KST] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000051
+
+	measure 'Ratio Ist I KST' =
+			
+			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I KST], [ZE Ist KST] )
+			VAR _chpu_ist = DIVIDE( [AnMin Ist I KST], [ZE Ist KST] )
+			RETURN
+			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+		formatString: 0.00
+		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000052
+
 	measure 'Delta AnMin KST' =
 			
 			[AnMin Ist KST] - [AnMin Soll KST]
@@ -259,52 +258,26 @@ table fakt_chpu_kst
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// YTD aus vorberechneter Dataflow-Spalte (Stand der letzten KW im Filterkontext)
 	measure 'ZE Ist KST YTD' =
 			
-			VAR _maxJahrKW = MAX('fakt_chpu_kst'[jahr_kw])
-			VAR _jahr = INT(_maxJahrKW / 100)
+			VAR _kw = MAX('fakt_chpu_kst'[jahr_kw])
 			RETURN
 			CALCULATE(
-			    [ZE Ist KST],
-			    FILTER(
-			        ALL('fakt_chpu_kst'),
-			        INT('fakt_chpu_kst'[jahr_kw] / 100) = _jahr &&
-			        'fakt_chpu_kst'[jahr_kw] <= _maxJahrKW
-			    )
+			    SUM('fakt_chpu_kst'[ze_ist_ytd]),
+			    'fakt_chpu_kst'[jahr_kw] = _kw
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000030
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'ZE Soll KST YTD' =
-			
-			VAR _maxJahrKW = MAX('fakt_chpu_kst'[jahr_kw])
-			VAR _jahr = INT(_maxJahrKW / 100)
-			RETURN
-			CALCULATE(
-			    [ZE Soll KST],
-			    FILTER(
-			        ALL('fakt_chpu_kst'),
-			        INT('fakt_chpu_kst'[jahr_kw] / 100) = _jahr &&
-			        'fakt_chpu_kst'[jahr_kw] <= _maxJahrKW
-			    )
-			)
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000031
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
 	measure 'AnMin Ist KST YTD' =
 			
-			VAR _maxJahrKW = MAX('fakt_chpu_kst'[jahr_kw])
-			VAR _jahr = INT(_maxJahrKW / 100)
+			VAR _kw = MAX('fakt_chpu_kst'[jahr_kw])
 			RETURN
 			CALCULATE(
-			    [AnMin Ist KST],
-			    FILTER(
-			        ALL('fakt_chpu_kst'),
-			        INT('fakt_chpu_kst'[jahr_kw] / 100) = _jahr &&
-			        'fakt_chpu_kst'[jahr_kw] <= _maxJahrKW
-			    )
+			    SUM('fakt_chpu_kst'[anmin_ist_ytd]),
+			    'fakt_chpu_kst'[jahr_kw] = _kw
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000032
 
@@ -312,16 +285,11 @@ table fakt_chpu_kst
 
 	measure 'AnMin Soll KST YTD' =
 			
-			VAR _maxJahrKW = MAX('fakt_chpu_kst'[jahr_kw])
-			VAR _jahr = INT(_maxJahrKW / 100)
+			VAR _kw = MAX('fakt_chpu_kst'[jahr_kw])
 			RETURN
 			CALCULATE(
-			    [AnMin Soll KST],
-			    FILTER(
-			        ALL('fakt_chpu_kst'),
-			        INT('fakt_chpu_kst'[jahr_kw] / 100) = _jahr &&
-			        'fakt_chpu_kst'[jahr_kw] <= _maxJahrKW
-			    )
+			    SUM('fakt_chpu_kst'[anmin_soll_ytd]),
+			    'fakt_chpu_kst'[jahr_kw] = _kw
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000033
 
@@ -329,16 +297,11 @@ table fakt_chpu_kst
 
 	measure 'AnMin Soll ohne Ratio KST YTD' =
 			
-			VAR _maxJahrKW = MAX('fakt_chpu_kst'[jahr_kw])
-			VAR _jahr = INT(_maxJahrKW / 100)
+			VAR _kw = MAX('fakt_chpu_kst'[jahr_kw])
 			RETURN
 			CALCULATE(
-			    [AnMin Soll ohne Ratio KST],
-			    FILTER(
-			        ALL('fakt_chpu_kst'),
-			        INT('fakt_chpu_kst'[jahr_kw] / 100) = _jahr &&
-			        'fakt_chpu_kst'[jahr_kw] <= _maxJahrKW
-			    )
+			    SUM('fakt_chpu_kst'[anmin_soll_ohne_ratio_ytd]),
+			    'fakt_chpu_kst'[jahr_kw] = _kw
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000034
 
@@ -368,19 +331,19 @@ table fakt_chpu_kst
 
 	measure 'Ratio Ist KST YTD' =
 			
-			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio KST YTD], [ZE Ist KST YTD] )
-			VAR _chpu_ist = DIVIDE( [AnMin Ist KST YTD], [ZE Ist KST YTD] )
-			RETURN
-			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
+			DIVIDE(
+			    [AnMin Soll ohne Ratio KST YTD] - [AnMin Ist KST YTD],
+			    [AnMin Soll ohne Ratio KST YTD]
+			) * 100
 		formatString: 0.00
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000037
 
 	measure 'Ratio Soll KST YTD' =
 			
-			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio KST YTD], [ZE Ist KST YTD] )
-			VAR _chpu_soll = DIVIDE( [AnMin Soll KST YTD], [ZE Ist KST YTD] )
-			RETURN
-			DIVIDE( _chpu_0 - _chpu_soll, _chpu_0 ) * 100
+			DIVIDE(
+			    [AnMin Soll ohne Ratio KST YTD] - [AnMin Soll KST YTD],
+			    [AnMin Soll ohne Ratio KST YTD]
+			) * 100
 		formatString: 0.00
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000038
 
@@ -398,67 +361,6 @@ table fakt_chpu_kst
 			    )
 			)
 		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000039
-
-	measure 'Delta CHPU KST YTD' =
-			
-			[CHPU Ist KST YTD] - [CHPU Soll KST YTD]
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000040
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Delta Ratio KST YTD' =
-			
-			[Ratio Ist KST YTD] - [Ratio Soll KST YTD]
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000041
-
-	measure 'Ratio Ist D KST' =
-			
-			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio D KST], [ZE Ist KST] )
-			VAR _chpu_ist = DIVIDE( [AnMin Ist D KST], [ZE Ist KST] )
-			RETURN
-			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000050
-
-	measure 'Ratio Ist DI KST' =
-			
-			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio DI KST], [ZE Ist KST] )
-			VAR _chpu_ist = DIVIDE( [AnMin Ist DI KST], [ZE Ist KST] )
-			RETURN
-			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000051
-
-	measure 'Ratio Ist I KST' =
-			
-			VAR _chpu_0 = DIVIDE( [AnMin Soll ohne Ratio I KST], [ZE Ist KST] )
-			VAR _chpu_ist = DIVIDE( [AnMin Ist I KST], [ZE Ist KST] )
-			RETURN
-			DIVIDE( _chpu_0 - _chpu_ist, _chpu_0 ) * 100
-		formatString: 0.00
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000052
-
-	measure 'CHPU Ist D KST' =
-			
-			DIVIDE( [AnMin Ist D KST], [ZE Ist KST] )
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000053
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'CHPU Ist DI KST' =
-			
-			DIVIDE( [AnMin Ist DI KST], [ZE Ist KST] )
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000054
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'CHPU Ist I KST' =
-			
-			DIVIDE( [AnMin Ist I KST], [ZE Ist KST] )
-		lineageTag: b1b2c3d4-2001-4bbb-b001-000000000055
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	column source_plant_id
 		dataType: string
@@ -775,17 +677,162 @@ table fakt_chpu_kst
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	column ze_ist_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000001
+		summarizeBy: sum
+		sourceColumn: ze_ist_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ze_soll_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000002
+		summarizeBy: sum
+		sourceColumn: ze_soll_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_ist_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000003
+		summarizeBy: sum
+		sourceColumn: anmin_ist_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000004
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column anmin_soll_ohne_ratio_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000005
+		summarizeBy: sum
+		sourceColumn: anmin_soll_ohne_ratio_ytd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_ist_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000006
+		summarizeBy: none
+		sourceColumn: chpu_ist_ytd
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column chpu_soll_ytd
+		dataType: double
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000007
+		summarizeBy: none
+		sourceColumn: chpu_soll_ytd
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ratio_ist_ytd
+		dataType: double
+		formatString: 0.00
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000008
+		summarizeBy: none
+		sourceColumn: ratio_ist_ytd
+
+		annotation SummarizationSetBy = User
+
+	column ratio_soll_ytd
+		dataType: double
+		formatString: 0.00
+		lineageTag: d1e2f3a4-4001-4ddd-b001-000000000009
+		summarizeBy: none
+		sourceColumn: ratio_soll_ytd
+
+		annotation SummarizationSetBy = User
+
 	partition fakt_chpu_kst = m
 		mode: import
-		source =
+		source = ```
 				let
 				  Quelle = PowerPlatform.Dataflows([]),
 				  #"Navigation 1" = Quelle{[Id = "Workspaces"]}[Data],
 				  #"Navigation 2" = #"Navigation 1"{[workspaceId = "c5f886de-fae0-47a0-a39c-88802ced5740"]}[Data],
 				  #"Navigation 3" = #"Navigation 2"{[dataflowId = "f86c3ce9-edc9-4f19-a809-f03028f2103b"]}[Data],
-				  #"Navigation 4" = #"Navigation 3"{[entity = "fakt_chpu_kst", version = ""]}[Data]
+				  #"Navigation 4" = #"Navigation 3"{[entity = "fakt_chpu_kst", version = ""]}[Data],
+				
+				  // ─────────────────────────────────────────────────────────────────────
+				  // Simulation der künftigen Dataflow-Spalten (YTD je Werk × KST × KW).
+				  // Sobald der Dataflow diese Spalten selbst liefert, entfallen alle
+				  // Schritte ab hier ersatzlos (gleiche Spaltennamen).
+				  // ─────────────────────────────────────────────────────────────────────
+				  MitJahr = Table.AddColumn(#"Navigation 4", "_jahr", each Number.IntegerDivide([jahr_kw], 100), Int64.Type),
+				
+				  Gruppiert = Table.Group(
+				    MitJahr,
+				    {"source_plant_id", "kst_bezeichnung_kurz", "_jahr"},
+				    {{"_grp", (t) =>
+				      let
+				        Sortiert = Table.Sort(t, {{"jahr_kw", Order.Ascending}}),
+				        MitYtd = Table.AddColumn(
+				          Sortiert,
+				          "_ytd",
+				          (zeile) =>
+				            let
+				              Bis = Table.SelectRows(Sortiert, each [jahr_kw] <= zeile[jahr_kw])
+				            in
+				              [
+				                ze_ist_ytd = List.Sum(Bis[ze_ist]),
+				                ze_soll_ytd = List.Sum(Bis[ze_soll]),
+				                anmin_ist_ytd = List.Sum(Bis[anmin_ist]),
+				                anmin_soll_ytd = List.Sum(Bis[anmin_soll]),
+				                anmin_soll_ohne_ratio_ytd = List.Sum(Bis[anmin_soll_ohne_ratio])
+				              ]
+				        ),
+				        Expandiert = Table.ExpandRecordColumn(
+				          MitYtd,
+				          "_ytd",
+				          {"ze_ist_ytd", "ze_soll_ytd", "anmin_ist_ytd", "anmin_soll_ytd", "anmin_soll_ohne_ratio_ytd"}
+				        )
+				      in
+				        Expandiert,
+				      type table}}
+				  ),
+				
+				  Kombiniert = Table.Combine(Gruppiert[_grp]),
+				
+				  // Abgeleitete YTD-Kennzahlen (CHPU/Ratio) auf Zeilenebene
+				  ChpuIstYtd = Table.AddColumn(Kombiniert, "chpu_ist_ytd", each if [ze_ist_ytd] = null or [ze_ist_ytd] = 0 then null else [anmin_ist_ytd] / [ze_ist_ytd], type nullable number),
+				  ChpuSollYtd = Table.AddColumn(ChpuIstYtd, "chpu_soll_ytd", each if [ze_ist_ytd] = null or [ze_ist_ytd] = 0 then null else [anmin_soll_ytd] / [ze_ist_ytd], type nullable number),
+				  RatioIstYtd = Table.AddColumn(ChpuSollYtd, "ratio_ist_ytd", each if [anmin_soll_ohne_ratio_ytd] = null or [anmin_soll_ohne_ratio_ytd] = 0 then null else ([anmin_soll_ohne_ratio_ytd] - [anmin_ist_ytd]) / [anmin_soll_ohne_ratio_ytd] * 100, type nullable number),
+				  RatioSollYtd = Table.AddColumn(RatioIstYtd, "ratio_soll_ytd", each if [anmin_soll_ohne_ratio_ytd] = null or [anmin_soll_ohne_ratio_ytd] = 0 then null else ([anmin_soll_ohne_ratio_ytd] - [anmin_soll_ytd]) / [anmin_soll_ohne_ratio_ytd] * 100, type nullable number),
+				
+				  OhneJahr = Table.RemoveColumns(RatioSollYtd, {"_jahr"}),
+				
+				  Typisiert = Table.TransformColumnTypes(
+				    OhneJahr,
+				    {
+				      {"ze_ist_ytd", type nullable number}, {"ze_soll_ytd", type nullable number},
+				      {"anmin_ist_ytd", type nullable number}, {"anmin_soll_ytd", type nullable number},
+				      {"anmin_soll_ohne_ratio_ytd", type nullable number}
+				    }
+				  )
 				in
-				  #"Navigation 4"
+				  Typisiert
+				```
 
 	annotation PBI_ResultType = Table
-
