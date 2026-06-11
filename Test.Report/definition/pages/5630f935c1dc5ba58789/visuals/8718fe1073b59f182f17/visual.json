@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "f98890f698a286780854",
+  "name": "8718fe1073b59f182f17",
   "position": {
-    "x": 900.0,
-    "y": 552.0,
-    "z": 10000,
-    "height": 72.0,
-    "width": 624.0,
-    "tabOrder": 10000
+    "x": 0.0,
+    "y": 984.0,
+    "z": 5000,
+    "height": 48.0,
+    "width": 372.0,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "textbox",
@@ -19,10 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Wesentliche Entscheidungsbedarfe",
+                    "value": "Version 0.9 | Stand 08.06.2026",
                     "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "18pt"
+                      "fontFamily": "DIN",
+                      "fontSize": "14pt",
+                      "color": "#666666"
                     }
                   }
                 ],
@@ -41,6 +42,26 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'KSU Klasse'"
                 }
               }
             }

@@ -1,0 +1,257 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "5bdb088e0e2060d80c32",
+  "position": {
+    "x": 24.0,
+    "y": 360.0,
+    "z": 5003,
+    "height": 228.0,
+    "width": 1608.0,
+    "tabOrder": 5003
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "source_plant_id"
+                }
+              },
+              "queryRef": "fakt_chpu.source_plant_id",
+              "nativeQueryRef": "source_plant_id",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Ist D"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Ist D",
+              "nativeQueryRef": "AnMin Ist D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Soll D"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Soll D",
+              "nativeQueryRef": "AnMin Soll D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Delta AnMin D"
+                }
+              },
+              "queryRef": "fakt_chpu.Delta AnMin D",
+              "nativeQueryRef": "Delta AnMin D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist D"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist D",
+              "nativeQueryRef": "Ratio Ist D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll D"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll D",
+              "nativeQueryRef": "Ratio Soll D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Ist D"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Ist D",
+              "nativeQueryRef": "CHPU Ist D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "CHPU Soll D"
+                }
+              },
+              "queryRef": "fakt_chpu.CHPU Soll D",
+              "nativeQueryRef": "CHPU Soll D"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "67496c5162b124b6097a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "source_plant_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "deb0c90008099e8b5670",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "AnMin Ist D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "af1f8eec36b1bf8c1ff8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "AnMin Soll D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c0b8dc802928e7a0324e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Delta AnMin D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "2fe18eb4bac0d0d876a4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "455a9acb6dbbb5e481ea",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Soll D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1382b9a5bd2f900121a9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Ist D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6d7d3388185acdf4896f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "CHPU Soll D"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

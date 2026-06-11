@@ -1,0 +1,74 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "881f2c042a465a214d71",
+  "position": {
+    "x": 1380.0,
+    "y": 756.0,
+    "z": 5005,
+    "height": 228.0,
+    "width": 264.0,
+    "tabOrder": 5005
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist D YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist D YTD",
+              "nativeQueryRef": "Ratio Ist D YTD"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Ratio Ist D YTD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7a7dd3c7d5aaaabae0eb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist D YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
