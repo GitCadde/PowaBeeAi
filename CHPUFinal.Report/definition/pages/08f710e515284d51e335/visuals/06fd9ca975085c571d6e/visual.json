@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "06fd9ca975085c571d6e",
+  "position": {
+    "x": 1632,
+    "y": 272,
+    "z": 7000,
+    "height": 80,
+    "width": 144,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll YTD",
+              "nativeQueryRef": "Ratio Soll YTD"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Schema": "extension",
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Ratio Soll YTD"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "28075c61638e8897d9ee",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Soll YTD"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

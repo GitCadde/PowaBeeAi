@@ -1,0 +1,133 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "cd8e62f1d9dd2ab5503b",
+  "position": {
+    "x": 464,
+    "y": 480,
+    "z": 9000,
+    "height": 320,
+    "width": 928,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_kostenstellen"
+                    }
+                  },
+                  "Property": "kst_bezeichnung_kurz"
+                }
+              },
+              "queryRef": "dim_kostenstellen.kst_bezeichnung_kurz",
+              "nativeQueryRef": "kst_bezeichnung_kurz",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST C-HPU Ist"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST C-HPU Ist",
+              "nativeQueryRef": "KST C-HPU Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST C-HPU Soll"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST C-HPU Soll",
+              "nativeQueryRef": "KST C-HPU Soll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST Ratio Ist"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST Ratio Ist",
+              "nativeQueryRef": "KST Ratio Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST AnMin Ist"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST AnMin Ist",
+              "nativeQueryRef": "KST AnMin Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST AnMin Soll"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST AnMin Soll",
+              "nativeQueryRef": "KST AnMin Soll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST Delta AnMin"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST Delta AnMin",
+              "nativeQueryRef": "KST Delta AnMin"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

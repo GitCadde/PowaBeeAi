@@ -1,0 +1,223 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "67cabb59aacc50521950",
+  "position": {
+    "x": 576,
+    "y": 192,
+    "z": 5000,
+    "height": 704,
+    "width": 768,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel AnMin Soll Dir VBZ"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel AnMin Soll Dir VBZ",
+              "nativeQueryRef": "Ziel AnMin Soll Dir VBZ"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel Ratio Soll Dir VBZ"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel Ratio Soll Dir VBZ",
+              "nativeQueryRef": "Ziel Ratio Soll Dir VBZ"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel AnMin Soll Dir Ind"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel AnMin Soll Dir Ind",
+              "nativeQueryRef": "Ziel AnMin Soll Dir Ind"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel Ratio Soll Dir Ind"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel Ratio Soll Dir Ind",
+              "nativeQueryRef": "Ziel Ratio Soll Dir Ind"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel AnMin Soll Dir Gesamt"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel AnMin Soll Dir Gesamt",
+              "nativeQueryRef": "Ziel AnMin Soll Dir Gesamt"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel Ratio Soll Dir Gesamt"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel Ratio Soll Dir Gesamt",
+              "nativeQueryRef": "Ziel Ratio Soll Dir Gesamt"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel AnMin Soll Ind"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel AnMin Soll Ind",
+              "nativeQueryRef": "Ziel AnMin Soll Ind"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel Ratio Soll Ind"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel Ratio Soll Ind",
+              "nativeQueryRef": "Ziel Ratio Soll Ind"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel AnMin Soll Gesamt"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel AnMin Soll Gesamt",
+              "nativeQueryRef": "Ziel AnMin Soll Gesamt"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ziel Ratio Soll Gesamt"
+                }
+              },
+              "queryRef": "fakt_chpu.Ziel Ratio Soll Gesamt",
+              "nativeQueryRef": "Ziel Ratio Soll Gesamt"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "valuesOnRow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "32D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "36D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

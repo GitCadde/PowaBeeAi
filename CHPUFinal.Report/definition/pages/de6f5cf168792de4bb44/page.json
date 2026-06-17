@@ -1,0 +1,155 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "de6f5cf168792de4bb44",
+  "displayName": "Kostenstelle Detail",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "1a4d22e9036eb1706c75",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_werke"
+              }
+            },
+            "Property": "bezeichnung"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_werke",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "bezeichnung"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Braunschweig'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "319024e671945aa10525",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_kostenstellen"
+              }
+            },
+            "Property": "kst_bezeichnung_kurz"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "341c5552e851c14e3809",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "3d2b8e64e19d38403c84",
+        "boundFilter": "1a4d22e9036eb1706c75",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_werke"
+              }
+            },
+            "Property": "bezeichnung"
+          }
+        }
+      },
+      {
+        "name": "ddd9a1cb65089ab17d94",
+        "boundFilter": "319024e671945aa10525",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_kostenstellen"
+              }
+            },
+            "Property": "kst_bezeichnung_kurz"
+          }
+        }
+      }
+    ]
+  },
+  "objects": {
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "0D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "0f79abd8ca5ec499949d",
+      "target": "45caea3febc9da303044",
+      "type": "NoFilter"
+    },
+    {
+      "source": "0f79abd8ca5ec499949d",
+      "target": "c1e1d3b37d4b905c34b0",
+      "type": "NoFilter"
+    }
+  ]
+}

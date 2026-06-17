@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "80bff5750156a0947984",
+  "position": {
+    "x": 1770.6666666666654,
+    "y": 191.77777777777774,
+    "z": 12000,
+    "height": 80,
+    "width": 144,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist VSI"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist VSI",
+              "nativeQueryRef": "Ratio Ist VSI"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Schema": "extension",
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Ratio Ist VSI"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "b4b783bcb81b4ba41881",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist VSI"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

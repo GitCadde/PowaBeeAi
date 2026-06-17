@@ -1,0 +1,508 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "2a7562fecbdc0b9ee733",
+  "position": {
+    "x": 208,
+    "y": 320,
+    "z": 2000,
+    "height": 384,
+    "width": 1504.0000000000002,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_werke"
+                    }
+                  },
+                  "Property": "bezeichnung"
+                }
+              },
+              "queryRef": "dim_werke.bezeichnung",
+              "nativeQueryRef": "Werk",
+              "active": true,
+              "displayName": "Werk"
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit C-HPU VSI Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit C-HPU VSI Soll",
+              "nativeQueryRef": "C-HPU Soll VSI",
+              "displayName": "C-HPU Soll VSI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit Trend Anzeige"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit Trend Anzeige",
+              "nativeQueryRef": "Trend ggü. Vor-KW",
+              "displayName": "Trend ggü. Vor-KW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit Delta KW"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit Delta KW",
+              "nativeQueryRef": "Δ Ratio Ist KW",
+              "displayName": "Δ Ratio Ist KW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit KW C-HPU Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit KW C-HPU Ist",
+              "nativeQueryRef": "C-HPU Ist KW",
+              "displayName": "C-HPU Ist KW"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit YTD",
+              "nativeQueryRef": "Ratio YTD",
+              "displayName": "Ratio YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit YTD C-HPU Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit YTD C-HPU Ist",
+              "nativeQueryRef": "C-HPU Ist YTD",
+              "displayName": "C-HPU Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit VSI"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit VSI",
+              "nativeQueryRef": "Ratio VSI",
+              "displayName": "Ratio VSI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Cockpit VSI C-HPU Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Cockpit VSI C-HPU Ist",
+              "nativeQueryRef": "C-HPU Ist VSI",
+              "displayName": "C-HPU Ist VSI"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_werke"
+                  }
+                },
+                "Property": "bezeichnung"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "fakt_chpu.Cockpit Delta KW"
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "22D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "24D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "rowHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "22D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "124.33335510171275D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit C-HPU VSI Soll"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "191.88889049752206D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit Trend Anzeige"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "154.65095127342582D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit KW C-HPU Ist"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "166.7823417984813D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit YTD"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "155.28996016301957D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit VSI"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "171.4444548539036D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit Delta KW"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "135.22222664849366D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fakt_chpu.Cockpit YTD C-HPU Ist"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f415544b005002018d30",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_werke"
+              }
+            },
+            "Property": "bezeichnung"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0162232193d93d18b20b",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit C-HPU VSI Soll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "02151e802c1e714e4412",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit Trend Anzeige"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "df26110023ca67aa0a67",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit Delta KW"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "f1488be16aa680ce5649",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit KW C-HPU Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "7f7dcbda632eb93d4454",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit YTD"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "06a2ae6ab755ba8e1ae7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit YTD C-HPU Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3b894a3816b4428a1cb9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit VSI"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6212a4ac6d33241e66da",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Cockpit VSI C-HPU Ist"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 447.65991335156917,
+            "y": 271
+          },
+          "nodeIndex": "dim_kostenstellen",
+          "nodeLineageTag": "9a9c11e0-aac6-48b2-8707-685dd0bfe9d7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 662.46758814114128,
+            "y": 0
+          },
+          "nodeIndex": "dim_werke",
+          "nodeLineageTag": "38fe260e-6bd0-4db9-a137-ab8ad97f27b6",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1426,
+            "y": 0
+          },
+          "nodeIndex": "dim_zeit_jahr_kw",
+          "nodeLineageTag": "13917775-ef20-4189-9d1d-d3af2192abea",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 859.318789766979,
+            "y": 207.18000082480035
+          },
+          "nodeIndex": "fakt_chpu",
+          "nodeLineageTag": "d22e508c-6774-4b0d-add2-a9ec7d9b8e21",
+          "size": {
+            "height": 917,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1135.1661629987225,
+            "y": 168
+          },
+          "nodeIndex": "fakt_chpu_kst",
+          "nodeLineageTag": "58de6fe3-6325-402f-9a63-a4b5f7ccc858",
+          "size": {
+            "height": 952,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Alle Tabellen",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Alle Tabellen",
+  "defaultDiagram": "Alle Tabellen"
+}

@@ -1,0 +1,416 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "613feb6a38b031cc8805",
+  "position": {
+    "x": 0,
+    "y": 192,
+    "z": 2000,
+    "height": 592.00000000000011,
+    "width": 1632,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "lineStackedColumnComboChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_zeit_jahr_kw"
+                    }
+                  },
+                  "Property": "kw"
+                }
+              },
+              "queryRef": "dim_zeit_jahr_kw.kw",
+              "nativeQueryRef": "kw",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist",
+              "nativeQueryRef": "Ratio Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll",
+              "nativeQueryRef": "Ratio Soll"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "ZE Ist"
+                }
+              },
+              "queryRef": "fakt_chpu.ZE Ist",
+              "nativeQueryRef": "ZE Ist"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "ZE Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.ZE Soll",
+              "nativeQueryRef": "ZE Soll"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "C-HPU Ist D"
+                }
+              },
+              "queryRef": "fakt_chpu.C-HPU Ist D",
+              "nativeQueryRef": "C-HPU Ist D"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "C-HPU Ist DI"
+                }
+              },
+              "queryRef": "fakt_chpu.C-HPU Ist DI",
+              "nativeQueryRef": "C-HPU Ist DI"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "C-HPU Ist I"
+                }
+              },
+              "queryRef": "fakt_chpu.C-HPU Ist I",
+              "nativeQueryRef": "C-HPU Ist I"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "C-HPU Soll"
+                }
+              },
+              "queryRef": "fakt_chpu.C-HPU Soll",
+              "nativeQueryRef": "C-HPU Soll"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_zeit_jahr_kw"
+                  }
+                },
+                "Property": "kw"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "53D"
+                }
+              }
+            },
+            "logAxisScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "axisType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Categorical'"
+                }
+              }
+            },
+            "concatenateLabels": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "secEnd": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "secStart": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'solid'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0f28ce126ce426029c06",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_zeit_jahr_kw"
+              }
+            },
+            "Property": "kw"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "d652515a8e51815b1bb7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dc64a3666e9041d0e457",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Soll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e12c0363a009a5037ba6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "ZE Ist"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "dbc113d70bd598106b90",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "ZE Soll"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4e2b408fc3b0e8ca5ab2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "C-HPU Ist D"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "838fc7b4c0a865819c30",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "C-HPU Ist DI"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "bcfbf91a0e0a6d68a387",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "C-HPU Ist I"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "46c9dfb66daa9eb05006",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "C-HPU Soll"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

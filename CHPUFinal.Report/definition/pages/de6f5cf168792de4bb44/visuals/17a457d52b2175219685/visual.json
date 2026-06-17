@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "17a457d52b2175219685",
+  "position": {
+    "x": 933.99999999999932,
+    "y": 168.44444444444451,
+    "z": 5000,
+    "height": 144,
+    "width": 160,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu_kst"
+                    }
+                  },
+                  "Property": "KST Ratio Ist"
+                }
+              },
+              "queryRef": "fakt_chpu_kst.KST Ratio Ist",
+              "nativeQueryRef": "KST Ratio Ist"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Schema": "extension",
+                    "Entity": "fakt_chpu_kst"
+                  }
+                },
+                "Property": "KST Ratio Ist"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

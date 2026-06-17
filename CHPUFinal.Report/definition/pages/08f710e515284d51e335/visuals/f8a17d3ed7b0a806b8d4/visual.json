@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "f8a17d3ed7b0a806b8d4",
+  "position": {
+    "x": 1770.6666666666654,
+    "y": 271.777777777778,
+    "z": 11000,
+    "height": 80,
+    "width": 144,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll VSI"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll VSI",
+              "nativeQueryRef": "Ratio Soll VSI"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Schema": "extension",
+                    "Entity": "fakt_chpu"
+                  }
+                },
+                "Property": "Ratio Soll VSI"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "3d59c0668a800b8091e2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Schema": "extension",
+                "Entity": "fakt_chpu"
+              }
+            },
+            "Property": "Ratio Soll VSI"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

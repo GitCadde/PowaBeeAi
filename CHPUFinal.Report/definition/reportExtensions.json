@@ -1,0 +1,2394 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportExtension/1.0.0/schema.json",
+  "name": "extension",
+  "entities": [
+    {
+      "name": "fakt_chpu",
+      "measures": [
+        {
+          "name": "_TestMeasure_DataDump",
+          "dataType": "Double",
+          "expression": "\nVAR _sep = UNICHAR(10)\n// --- Dimensionen ---\nVAR _werk = SELECTEDVALUE(dim_werke[bezeichnung], \"(mehrere Werke)\")\nVAR _kw = SELECTEDVALUE(dim_zeit_jahr_kw[jahr_kw], \"(mehrere KW)\")\nVAR _jahr = SELECTEDVALUE(dim_zeit_jahr_kw[jahr], \"(mehrere Jahre)\")\nVAR _rows_fakt = COUNTROWS(fakt_chpu)\nVAR _rows_kst = COUNTROWS(fakt_chpu_kst)\n// --- C-HPU Werte (Werk-Ebene) ---\nVAR _chpu_ist = SUM(fakt_chpu[chpu_ist])\nVAR _chpu_soll = SUM(fakt_chpu[chpu_soll])\nVAR _chpu_soll_ohne_ratio = SUM(fakt_chpu[chpu_soll_ohne_ratio])\nVAR _chpu_ist_ytd = SUM(fakt_chpu[chpu_ist_ytd])\nVAR _chpu_soll_ytd = SUM(fakt_chpu[chpu_soll_ytd])\nVAR _chpu_ist_d = SUM(fakt_chpu[chpu_ist_d])\nVAR _chpu_ist_di = SUM(fakt_chpu[chpu_ist_di])\nVAR _chpu_ist_i = SUM(fakt_chpu[chpu_ist_i])\n// --- Anwesenheitsminuten ---\nVAR _anmin_ist = SUM(fakt_chpu[anmin_ist])\nVAR _anmin_soll = SUM(fakt_chpu[anmin_soll])\nVAR _anmin_soll_ohne_ratio = SUM(fakt_chpu[anmin_soll_ohne_ratio])\nVAR _anmin_ist_ytd = SUM(fakt_chpu[anmin_ist_ytd])\nVAR _anmin_soll_ytd = SUM(fakt_chpu[anmin_soll_ytd])\nVAR _anmin_ist_d = SUM(fakt_chpu[anmin_ist_d])\nVAR _anmin_ist_di = SUM(fakt_chpu[anmin_ist_di])\nVAR _anmin_ist_i = SUM(fakt_chpu[anmin_ist_i])\nVAR _anmin_soll_d = SUM(fakt_chpu[anmin_soll_d])\nVAR _anmin_soll_di = SUM(fakt_chpu[anmin_soll_di])\nVAR _anmin_soll_i = SUM(fakt_chpu[anmin_soll_i])\nVAR _anmin_ist_d_di = SUM(fakt_chpu[anmin_ist_d_di])\nVAR _anmin_soll_d_di = SUM(fakt_chpu[anmin_soll_d_di])\nVAR _anmin_soll_ohne_ratio_d = SUM(fakt_chpu[anmin_soll_ohne_ratio_d])\nVAR _anmin_soll_ohne_ratio_di = SUM(fakt_chpu[anmin_soll_ohne_ratio_di])\nVAR _anmin_soll_ohne_ratio_i = SUM(fakt_chpu[anmin_soll_ohne_ratio_i])\nVAR _anmin_soll_ohne_ratio_ytd = SUM(fakt_chpu[anmin_soll_ohne_ratio_ytd])\nVAR _anmin_soll_ratio_soll_ytd = SUM(fakt_chpu[anmin_soll_x_ratio_soll_ytd])\n// --- Ratio ---\nVAR _ratio_ist = SUM(fakt_chpu[ratio_ist])\nVAR _ratio_soll = SUM(fakt_chpu[ratio_soll])\nVAR _ratio_ist_d = SUM(fakt_chpu[ratio_ist_d])\nVAR _ratio_ist_di = SUM(fakt_chpu[ratio_ist_di])\nVAR _ratio_ist_i = SUM(fakt_chpu[ratio_ist_i])\nVAR _ratio_ist_ytd = SUM(fakt_chpu[ratio_ist_ytd])\nVAR _ratio_soll_d = SUM(fakt_chpu[ratio_soll_d])\nVAR _ratio_soll_di = SUM(fakt_chpu[ratio_soll_di])\nVAR _ratio_soll_d_di = SUM(fakt_chpu[ratio_soll_d_di])\nVAR _ratio_soll_i = SUM(fakt_chpu[ratio_soll_i])\nVAR _ratio_soll_ytd = SUM(fakt_chpu[ratio_soll_ytd])\n// --- ZE ---\nVAR _ze_ist = SUM(fakt_chpu[ze_ist])\nVAR _ze_soll = SUM(fakt_chpu[ze_soll])\nVAR _ze_ist_ytd = SUM(fakt_chpu[ze_ist_ytd])\nVAR _ze_ist_soll_ytd = SUM(fakt_chpu[ze_ist_soll_ytd])\n// --- Ampel ---\nVAR _ampel = SELECTEDVALUE(fakt_chpu[ampel], \"(mehrere)\")\nVAR _ampel_ytd = SELECTEDVALUE(fakt_chpu[ampel_ytd], \"(mehrere)\")\nRETURN\n\"══════ KONTEXT ══════\" & _sep &\n\"Werk: \" & _werk & _sep &\n\"Jahr: \" & _jahr & \" | KW: \" & _kw & _sep &\n\"Zeilen fakt_chpu: \" & _rows_fakt & _sep &\n\"Zeilen fakt_chpu_kst: \" & _rows_kst & _sep &\n_sep &\n\"══════ C-HPU ══════\" & _sep &\n\"chpu_ist: \" & FORMAT(_chpu_ist, \"#,##0.00\") & _sep &\n\"chpu_ist_d: \" & FORMAT(_chpu_ist_d, \"#,##0.00\") & _sep &\n\"chpu_ist_di: \" & FORMAT(_chpu_ist_di, \"#,##0.00\") & _sep &\n\"chpu_ist_i: \" & FORMAT(_chpu_ist_i, \"#,##0.00\") & _sep &\n\"chpu_ist_ytd: \" & FORMAT(_chpu_ist_ytd, \"#,##0.00\") & _sep &\n\"chpu_soll: \" & FORMAT(_chpu_soll, \"#,##0.00\") & _sep &\n\"chpu_soll_ohne_ratio: \" & FORMAT(_chpu_soll_ohne_ratio, \"#,##0.00\") & _sep &\n\"chpu_soll_ytd: \" & FORMAT(_chpu_soll_ytd, \"#,##0.00\") & _sep &\n_sep &\n\"══════ ANMIN ══════\" & _sep &\n\"anmin_ist: \" & FORMAT(_anmin_ist, \"#,##0.00\") & _sep &\n\"anmin_ist_d: \" & FORMAT(_anmin_ist_d, \"#,##0.00\") & _sep &\n\"anmin_ist_di: \" & FORMAT(_anmin_ist_di, \"#,##0.00\") & _sep &\n\"anmin_ist_d_di: \" & FORMAT(_anmin_ist_d_di, \"#,##0.00\") & _sep &\n\"anmin_ist_i: \" & FORMAT(_anmin_ist_i, \"#,##0.00\") & _sep &\n\"anmin_ist_ytd: \" & FORMAT(_anmin_ist_ytd, \"#,##0.00\") & _sep &\n\"anmin_soll: \" & FORMAT(_anmin_soll, \"#,##0.00\") & _sep &\n\"anmin_soll_d: \" & FORMAT(_anmin_soll_d, \"#,##0.00\") & _sep &\n\"anmin_soll_di: \" & FORMAT(_anmin_soll_di, \"#,##0.00\") & _sep &\n\"anmin_soll_d_di: \" & FORMAT(_anmin_soll_d_di, \"#,##0.00\") & _sep &\n\"anmin_soll_i: \" & FORMAT(_anmin_soll_i, \"#,##0.00\") & _sep &\n\"anmin_soll_ytd: \" & FORMAT(_anmin_soll_ytd, \"#,##0.00\") & _sep &\n\"anmin_soll_ohne_ratio: \" & FORMAT(_anmin_soll_ohne_ratio, \"#,##0.00\") & _sep &\n\"anmin_soll_ohne_ratio_d: \" & FORMAT(_anmin_soll_ohne_ratio_d, \"#,##0.00\") & _sep &\n\"anmin_soll_ohne_ratio_di: \" & FORMAT(_anmin_soll_ohne_ratio_di, \"#,##0.00\") & _sep &\n\"anmin_soll_ohne_ratio_i: \" & FORMAT(_anmin_soll_ohne_ratio_i, \"#,##0.00\") & _sep &\n\"anmin_soll_ohne_ratio_ytd: \" & FORMAT(_anmin_soll_ohne_ratio_ytd, \"#,##0.00\") & _sep &\n\"anmin_soll_ratio_soll_ytd: \" & FORMAT(_anmin_soll_ratio_soll_ytd, \"#,##0.00\") & _sep &\n_sep &\n\"══════ RATIO ══════\" & _sep &\n\"ratio_ist: \" & FORMAT(_ratio_ist, \"#,##0.0000\") & _sep &\n\"ratio_ist_d: \" & FORMAT(_ratio_ist_d, \"#,##0.0000\") & _sep &\n\"ratio_ist_di: \" & FORMAT(_ratio_ist_di, \"#,##0.0000\") & _sep &\n\"ratio_ist_i: \" & FORMAT(_ratio_ist_i, \"#,##0.0000\") & _sep &\n\"ratio_ist_ytd: \" & FORMAT(_ratio_ist_ytd, \"#,##0.0000\") & _sep &\n\"ratio_soll: \" & FORMAT(_ratio_soll, \"#,##0.0000\") & _sep &\n\"ratio_soll_d: \" & FORMAT(_ratio_soll_d, \"#,##0.0000\") & _sep &\n\"ratio_soll_di: \" & FORMAT(_ratio_soll_di, \"#,##0.0000\") & _sep &\n\"ratio_soll_d_di: \" & FORMAT(_ratio_soll_d_di, \"#,##0.0000\") & _sep &\n\"ratio_soll_i: \" & FORMAT(_ratio_soll_i, \"#,##0.0000\") & _sep &\n\"ratio_soll_ytd: \" & FORMAT(_ratio_soll_ytd, \"#,##0.0000\") & _sep &\n_sep &\n\"══════ ZE ══════\" & _sep &\n\"ze_ist: \" & FORMAT(_ze_ist, \"#,##0.00\") & _sep &\n\"ze_soll: \" & FORMAT(_ze_soll, \"#,##0.00\") & _sep &\n\"ze_ist_ytd: \" & FORMAT(_ze_ist_ytd, \"#,##0.00\") & _sep &\n\"ze_ist_soll_ytd: \" & FORMAT(_ze_ist_soll_ytd, \"#,##0.00\") & _sep &\n_sep &\n\"══════ AMPEL ══════\" & _sep &\n\"ampel: \" & _ampel & _sep &\n\"ampel_ytd: \" & _ampel_ytd"
+        },
+        {
+          "name": "AnMin Ist",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_ist])\n"
+        },
+        {
+          "name": "AnMin Ist D",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_ist_d]\n)"
+        },
+        {
+          "name": "AnMin Ist DI",
+          "dataType": "Double",
+          "expression": "SUM(fakt_chpu[anmin_ist_di])"
+        },
+        {
+          "name": "AnMin Ist I",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_ist_i])\n"
+        },
+        {
+          "name": "AnMin Ist D_DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_ist_d_di])\n"
+        },
+        {
+          "name": "AnMin Soll",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll])\n"
+        },
+        {
+          "name": "AnMin Soll D",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_d])\n"
+        },
+        {
+          "name": "AnMin Soll DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_di])\n"
+        },
+        {
+          "name": "AnMin Soll I",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_i])\n"
+        },
+        {
+          "name": "AnMin Soll D_DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_d_di]\n)"
+        },
+        {
+          "name": "AnMin Soll ohne Ratio",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_ohne_ratio])\n"
+        },
+        {
+          "name": "AnMin Soll ohne Ratio D",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_ohne_ratio_d])\n"
+        },
+        {
+          "name": "AnMin Soll ohne Ratio DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_ohne_ratio_di])\n"
+        },
+        {
+          "name": "AnMin Soll ohne Ratio I",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[anmin_soll_ohne_ratio_i])\n"
+        },
+        {
+          "name": "AnMin Soll ohne Ratio D_DI",
+          "dataType": "Double",
+          "expression": "\n[AnMin Soll ohne Ratio D] + [AnMin Soll ohne Ratio DI]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ZE Ist",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[ze_ist])\n"
+        },
+        {
+          "name": "ZE Soll",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu[ze_soll])\n"
+        },
+        {
+          "name": "C-HPU Ist",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Ist], [ZE Ist])\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist D",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Ist D], [ZE Ist]\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Ist DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist I",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Ist I], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist D_DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Ist D_DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist D_DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll], [ZE Ist])\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll D",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll D], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll I",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll I], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll D_DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll D_DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D_DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio D",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio D], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio I",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio I], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio D_DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio D_DI], [ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio D_DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio] - [C-HPU Ist],\n    [C-HPU Soll ohne Ratio]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Soll",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE(\r\n    [C-HPU Soll ohne Ratio] - [C-HPU Soll],\r\n    [C-HPU Soll ohne Ratio]\r\n)\r\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist D",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio D] - [C-HPU Ist D],\n    [C-HPU Soll ohne Ratio D]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio DI] - [C-HPU Ist DI],\n    [C-HPU Soll ohne Ratio DI]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist D_DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio D_DI] - [C-HPU Ist D_DI],\n    [C-HPU Soll ohne Ratio D_DI]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio D_DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist D_DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist I",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio I] - [C-HPU Ist I],\n    [C-HPU Soll ohne Ratio I]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Status",
+          "dataType": "Double",
+          "expression": "\nVAR _ri = [Ratio Ist]\nVAR _rs = [Ratio Soll]\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(_ri) || ISBLANK(_rs), BLANK(),\n    _ri >= _rs, \"green\",\n    _ri >= 0 && _ri < _rs, \"yellow\",\n    _ri < 0, \"red\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Farbe",
+          "dataType": "Double",
+          "expression": "\nSWITCH(\n    [Ampel Status],\n    \"green\", \"#00B050\",\n    \"yellow\", \"#FFD966\",\n    \"red\", \"#FF0000\",\n    \"#D9D9D9\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Symbol",
+          "dataType": "Double",
+          "expression": "\nSWITCH(\n    [Ampel Status],\n    \"green\", \"■\",\n    \"yellow\", \"■\",\n    \"red\", \"■\",\n    \"□\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Aktuelles Jahr",
+          "dataType": "Double",
+          "expression": "\nSELECTEDVALUE(\n    dim_zeit_jahr_kw[jahr],\n    MAX(dim_zeit_jahr_kw[jahr])\n)\n"
+        },
+        {
+          "name": "Aktuelle KW",
+          "dataType": "Double",
+          "expression": "\nSELECTEDVALUE(\n    dim_zeit_jahr_kw[kw],\n    MAX(dim_zeit_jahr_kw[kw])\n)\n"
+        },
+        {
+          "name": "Aktuelle Jahr_KW",
+          "dataType": "Double",
+          "expression": "\nSELECTEDVALUE(\n    dim_zeit_jahr_kw[jahr_kw],\n    MAX(dim_zeit_jahr_kw[jahr_kw])\n)\n"
+        },
+        {
+          "name": "AnMin Ist YTD",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [AnMin Ist],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] <= _kw\r\n    )\r\n)",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll YTD",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [AnMin Soll],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] <= _kw\r\n    )\r\n)",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll ohne Ratio YTD",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [AnMin Soll ohne Ratio],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] <= _kw\r\n    )\r\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ZE Ist YTD",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [ZE Ist],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] <= _kw\r\n    )\r\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist YTD",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE([AnMin Ist YTD], [ZE Ist YTD])\r\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll YTD",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE([AnMin Soll YTD], [ZE Ist YTD])\r\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio YTD",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE([AnMin Soll ohne Ratio YTD], [ZE Ist YTD])\r\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist YTD",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE(\r\n    [C-HPU Soll ohne Ratio YTD] - [C-HPU Ist YTD],\r\n    [C-HPU Soll ohne Ratio YTD]\r\n)\r\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Soll YTD",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE(\r\n    [C-HPU Soll ohne Ratio YTD] - [C-HPU Soll YTD],\r\n    [C-HPU Soll ohne Ratio YTD]\r\n)\r\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Status YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _ri = [Ratio Ist YTD]\nVAR _rs = [Ratio Soll YTD]\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(_ri) || ISBLANK(_rs), BLANK(),\n    _ri >= _rs, \"green\",\n    _ri >= 0 && _ri < _rs, \"yellow\",\n    _ri < 0, \"red\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Soll YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Farbe YTD",
+          "dataType": "Double",
+          "expression": "\nSWITCH(\n    [Ampel Status YTD],\n    \"green\", \"#00B050\",\n    \"yellow\", \"#FFD966\",\n    \"red\", \"#FF0000\",\n    \"#D9D9D9\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll Restjahr",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [AnMin Soll],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] > _kw\r\n    )\r\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll ohne Ratio Restjahr",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [AnMin Soll ohne Ratio],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] > _kw\r\n    )\r\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ZE Soll Restjahr",
+          "dataType": "Double",
+          "expression": "\r\nVAR _jahr = [Berichtsjahr]\r\nVAR _kw = [BerichtsKW]\r\nRETURN\r\nCALCULATE(\r\n    [ZE Soll],\r\n    REMOVEFILTERS(dim_zeit_jahr_kw),\r\n    REMOVEFILTERS(fakt_chpu[jahr_kw]),\r\n    FILTER(\r\n        ALL(dim_zeit_jahr_kw),\r\n        dim_zeit_jahr_kw[jahr] = _jahr &&\r\n        dim_zeit_jahr_kw[kw] > _kw\r\n    )\r\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Berichtsjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin VSI",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist YTD] + [AnMin Soll Restjahr]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll Restjahr"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll ohne Ratio VSI",
+          "dataType": "Double",
+          "expression": "\n[AnMin Soll ohne Ratio YTD] + [AnMin Soll ohne Ratio Restjahr]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio Restjahr"
+              }
+            ]
+          }
+        },
+        {
+          "name": "ZE VSI",
+          "dataType": "Double",
+          "expression": "\n[ZE Ist YTD] + [ZE Soll Restjahr]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Soll Restjahr"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Ist VSI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin VSI], [ZE VSI])\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll ohne Ratio VSI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([AnMin Soll ohne Ratio VSI], [ZE VSI]\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "C-HPU Soll VSI",
+          "dataType": "Double",
+          "expression": "\r\nDIVIDE(\r\n    [AnMin Soll YTD] + [AnMin Soll Restjahr],\r\n    [ZE VSI]\r\n)",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll Restjahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist VSI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio VSI] - [C-HPU Ist VSI],\n    [C-HPU Soll ohne Ratio VSI]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Soll VSI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [C-HPU Soll ohne Ratio VSI] - [C-HPU Soll VSI],\n    [C-HPU Soll ohne Ratio VSI]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll ohne Ratio VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Status VSI",
+          "dataType": "Double",
+          "expression": "\nVAR _ri = [Ratio Ist VSI]\nVAR _rs = [Ratio Soll VSI]\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(_ri) || ISBLANK(_rs), BLANK(),\n    _ri >= _rs, \"green\",\n    _ri >= 0 && _ri < _rs, \"yellow\",\n    _ri < 0, \"red\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Soll VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ampel Farbe VSI",
+          "dataType": "Double",
+          "expression": "\nSWITCH(\n    [Ampel Status VSI],\n    \"green\", \"#00B050\",\n    \"yellow\", \"#FFD966\",\n    \"red\", \"#FF0000\",\n    \"#D9D9D9\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Anzahl Werke",
+          "dataType": "Double",
+          "expression": "\nDISTINCTCOUNT(dim_werke[bezeichnung])\n"
+        },
+        {
+          "name": "Anzahl Werke VSI Grün",
+          "dataType": "Double",
+          "expression": "\nSUMX(\n    VALUES(dim_werke[bezeichnung]),\n    IF([Ampel Status VSI] = \"green\", 1, 0)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Management Summary Kontext",
+          "dataType": "Double",
+          "expression": "\nVAR _green = [Anzahl Werke VSI Grün]\nVAR _werke = [Anzahl Werke]\nVAR _ytd = FORMAT([Ratio Ist YTD], \"0.0%\")\nVAR _vsi = FORMAT([Ratio Ist VSI], \"0.0%\")\nVAR _deltaYTD = FORMAT([Ratio Ist YTD] - [Ratio Soll YTD], \"+0.0%;-0.0%;0.0%\")\nVAR _deltaVSI = FORMAT([Ratio Ist VSI] - [Ratio Soll VSI], \"+0.0%;-0.0%;0.0%\")\nVAR _ampelYTD = [Ampel Status YTD]\nVAR _ampelVSI = [Ampel Status VSI]\nRETURN\n\"▪ \" & _green & \" von \" & _werke & \" Werken Vollk. Kreis VSI Ist grün\" & UNICHAR(10) &\n\"▪ Zielerreichung Vollk. Kreis \" & _ytd & \" YTD Ist (\" & _ampelYTD & \" | \" & _deltaYTD & \")\" & UNICHAR(10) &\n\"▪ Zielerreichung Vollk. Kreis \" & _vsi & \" VSI Ist (\" & _ampelVSI & \" | \" & _deltaVSI & \")\"\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Anzahl Werke VSI Grün"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Anzahl Werke"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Soll YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Soll VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ampel Status VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Management Summary Entscheidung",
+          "dataType": "Double",
+          "expression": "\n\"▪ Kenntnisnahme des aktuellen Standes.\"\n"
+        },
+        {
+          "name": "Cockpit C-HPU VSI Soll",
+          "dataType": "Double",
+          "expression": "\n[C-HPU Soll VSI]\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Soll VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit Delta KW",
+          "dataType": "Double",
+          "expression": "\n[Ratio Ist]\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit YTD",
+          "dataType": "Double",
+          "expression": "\n[Ratio Ist YTD]\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit VSI",
+          "dataType": "Double",
+          "expression": "\n[Ratio Ist VSI]\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit KW C-HPU Ist",
+          "dataType": "Double",
+          "expression": "\n[C-HPU Ist]\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit YTD C-HPU Ist",
+          "dataType": "Double",
+          "expression": "\n[C-HPU Ist YTD]\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit VSI C-HPU Ist",
+          "dataType": "Double",
+          "expression": "\n[C-HPU Ist VSI]\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "C-HPU Ist VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Vorherige KW",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nMAXX(\n    FILTER(\n        ALL(dim_zeit_jahr_kw),\n        dim_zeit_jahr_kw[jahr] = _jahr &&\n        dim_zeit_jahr_kw[kw] < _kw\n    ),\n    dim_zeit_jahr_kw[kw]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ratio Ist VSI Vor-KW",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nVAR _prevKW =\n    MAXX(\n        FILTER(\n            ALL(dim_zeit_jahr_kw),\n            dim_zeit_jahr_kw[jahr] = _jahr &&\n            dim_zeit_jahr_kw[kw] < _kw\n        ),\n        dim_zeit_jahr_kw[kw]\n    )\nRETURN\nIF(\n    ISBLANK(_prevKW),\n    BLANK(),\n    CALCULATE(\n        [Ratio Ist VSI],\n        REMOVEFILTERS(dim_zeit_jahr_kw),\n        REMOVEFILTERS(fakt_chpu[jahr_kw]),\n        dim_zeit_jahr_kw[jahr] = _jahr,\n        dim_zeit_jahr_kw[kw] = _prevKW\n    )\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta Ratio VSI vs Vor-KW",
+          "dataType": "Double",
+          "expression": "\n[Ratio Ist VSI] - [Ratio Ist VSI Vor-KW]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ratio Ist VSI Vor-KW"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit Trend Anzeige",
+          "dataType": "Double",
+          "expression": "\nVAR _d = [Delta Ratio VSI vs Vor-KW]\nVAR _symbol =\n    SWITCH(\n        TRUE(),\n        ISBLANK(_d), \"\",\n        _d > 0, \"↑\",\n        _d < 0, \"↓\",\n        \"→\"\n    )\nRETURN\n_symbol & \" \" & FORMAT(_d, \"+0.0%;-0.0%;0.0%\")\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Delta Ratio VSI vs Vor-KW"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Cockpit Trend Farbe",
+          "dataType": "Double",
+          "expression": "\nVAR _d = [Delta Ratio VSI vs Vor-KW]\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(_d), \"#808080\",\n    _d > 0, \"#66A182\",\n    _d < 0, \"#D9534F\",\n    \"#D9A441\"\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Delta Ratio VSI vs Vor-KW"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Titel Werk Detail",
+          "dataType": "Double",
+          "expression": "\n\"C-HPU Entwicklung 2026 | \" &\nSELECTEDVALUE(dim_werke[bezeichnung], \"Werk\")"
+        },
+        {
+          "name": "AnMin Ist Ø4W",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nAVERAGEX(\n    FILTER(\n        ALL(dim_zeit_jahr_kw),\n        dim_zeit_jahr_kw[jahr] = _jahr &&\n        dim_zeit_jahr_kw[kw] <= _kw &&\n        dim_zeit_jahr_kw[kw] >= _kw - 3\n    ),\n    CALCULATE([AnMin Ist])\n)\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll Ø4W",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nAVERAGEX(\n    FILTER(\n        ALL(dim_zeit_jahr_kw),\n        dim_zeit_jahr_kw[jahr] = _jahr &&\n        dim_zeit_jahr_kw[kw] <= _kw &&\n        dim_zeit_jahr_kw[kw] >= _kw - 3\n    ),\n    CALCULATE([AnMin Soll])\n)\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Ø4W",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist Ø4W] - [AnMin Soll Ø4W]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist Ø4W"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll Ø4W"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin YTD",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist YTD] - [AnMin Soll YTD]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Direkt Ist",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist D] + [AnMin Ist DI]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Direkt Soll",
+          "dataType": "Double",
+          "expression": "\n[AnMin Soll D] + [AnMin Soll DI]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta Farbe Minuten",
+          "dataType": "Double",
+          "expression": "\nVAR _delta =\n    SELECTEDMEASURE()\nRETURN\nSWITCH(\n    TRUE(),\n    ISBLANK(_delta), \"#FFFFFF\",\n    _delta < 0, \"#63BE7B\",\n    _delta > 0, \"#F8696B\",\n    \"#FFFFFF\"\n)\n"
+        },
+        {
+          "name": "Farbe Delta AnMin YTD",
+          "dataType": "Double",
+          "expression": "\nSWITCH(\n    TRUE(),\n    [Delta AnMin YTD] < 0, \"#63BE7B\",\n    [Delta AnMin YTD] > 0, \"#F8696B\",\n    \"#FFFFFF\"\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Delta AnMin YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin Soll Dir VBZ",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll D],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin Soll Dir Ind",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll DI],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin Soll Dir Gesamt",
+          "dataType": "Double",
+          "expression": "\n[Ziel AnMin Soll Dir VBZ] + [Ziel AnMin Soll Dir Ind]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir VBZ"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin Soll Ind",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll I],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin Soll Gesamt",
+          "dataType": "Double",
+          "expression": "\n[Ziel AnMin Soll Dir Gesamt] + [Ziel AnMin Soll Ind]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir Gesamt"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin ohne Ratio Dir VBZ",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll ohne Ratio D],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin ohne Ratio Dir Ind",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll ohne Ratio DI],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin ohne Ratio Dir Gesamt",
+          "dataType": "Double",
+          "expression": "\n[Ziel AnMin ohne Ratio Dir VBZ] + [Ziel AnMin ohne Ratio Dir Ind]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir VBZ"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin ohne Ratio Ind",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nRETURN\nCALCULATE(\n    [AnMin Soll ohne Ratio I],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll ohne Ratio I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel AnMin ohne Ratio Gesamt",
+          "dataType": "Double",
+          "expression": "\n[Ziel AnMin ohne Ratio Dir Gesamt] + [Ziel AnMin ohne Ratio Ind]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir Gesamt"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel Ratio Soll Dir VBZ",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [Ziel AnMin ohne Ratio Dir VBZ] - [Ziel AnMin Soll Dir VBZ],\n    [Ziel AnMin ohne Ratio Dir VBZ]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir VBZ"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir VBZ"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel Ratio Soll Dir Ind",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [Ziel AnMin ohne Ratio Dir Ind] - [Ziel AnMin Soll Dir Ind],\n    [Ziel AnMin ohne Ratio Dir Ind]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir Ind"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel Ratio Soll Dir Gesamt",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [Ziel AnMin ohne Ratio Dir Gesamt] - [Ziel AnMin Soll Dir Gesamt],\n    [Ziel AnMin ohne Ratio Dir Gesamt]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Dir Gesamt"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Dir Gesamt"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel Ratio Soll Ind",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [Ziel AnMin ohne Ratio Ind] - [Ziel AnMin Soll Ind],\n    [Ziel AnMin ohne Ratio Ind]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Ind"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Ind"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Ziel Ratio Soll Gesamt",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [Ziel AnMin ohne Ratio Gesamt] - [Ziel AnMin Soll Gesamt],\n    [Ziel AnMin ohne Ratio Gesamt]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin ohne Ratio Gesamt"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Ziel AnMin Soll Gesamt"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Titel Ziele Werk",
+          "dataType": "Double",
+          "expression": "\n\"C-HPU Ziele 2026 | \" &\nSELECTEDVALUE(dim_werke[bezeichnung], \"Werk\")"
+        },
+        {
+          "name": "Berichtsjahr",
+          "dataType": "Double",
+          "expression": "MAXX(\r\n    ALLSELECTED(dim_zeit_jahr_kw),\r\n    dim_zeit_jahr_kw[jahr]\r\n)\r\n\r\n"
+        },
+        {
+          "name": "BerichtsKW",
+          "dataType": "Double",
+          "expression": "\r\nMAXX(\r\n    ALLSELECTED(dim_zeit_jahr_kw),\r\n    dim_zeit_jahr_kw[kw]\r\n)"
+        },
+        {
+          "name": "TEST BerichtsKW",
+          "dataType": "Double",
+          "expression": "\r\n[BerichtsKW]",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "BerichtsKW"
+              }
+            ]
+          }
+        },
+        {
+          "name": "TEST AnMin Soll Restjahr",
+          "dataType": "Double",
+          "expression": "\r\n[AnMin Soll Restjahr]",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll Restjahr"
+              }
+            ]
+          }
+        },
+        {
+          "name": "TEST ZE Soll Restjahr",
+          "dataType": "Double",
+          "expression": "\r\n[ZE Soll Restjahr]",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "ZE Soll Restjahr"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "fakt_chpu_kst",
+      "measures": [
+        {
+          "name": "KST AnMin Ist",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_ist])\n",
+          "formatString": "0"
+        },
+        {
+          "name": "KST AnMin Ist D",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_ist_d])\n"
+        },
+        {
+          "name": "KST AnMin Ist DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_ist_di])\n"
+        },
+        {
+          "name": "KST AnMin Ist I",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_ist_i])\n"
+        },
+        {
+          "name": "KST AnMin Soll",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_soll])\n",
+          "formatString": "0"
+        },
+        {
+          "name": "KST AnMin Soll D",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_soll_d])\n"
+        },
+        {
+          "name": "KST AnMin Soll DI",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_soll_di])\n"
+        },
+        {
+          "name": "KST AnMin Soll I",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_soll_i])\n"
+        },
+        {
+          "name": "KST AnMin Soll ohne Ratio",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[anmin_soll_ohne_ratio])\n"
+        },
+        {
+          "name": "KST ZE Ist",
+          "dataType": "Double",
+          "expression": "\nSUM(fakt_chpu_kst[ze_ist])\n"
+        },
+        {
+          "name": "KST C-HPU Ist",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Ist], [KST ZE Ist])\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Ist"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST C-HPU Ist D",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Ist D], [KST ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Ist D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST C-HPU Ist DI",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Ist DI], [KST ZE Ist]\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Ist DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST C-HPU Ist I",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Ist I], [KST ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Ist I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST C-HPU Soll",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Soll], [KST ZE Ist])\n",
+          "formatString": "0.00",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Soll"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST C-HPU Soll ohne Ratio",
+          "dataType": "Double",
+          "expression": "\nDIVIDE([KST AnMin Soll ohne Ratio], [KST ZE Ist])\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST ZE Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST Ratio Ist",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [KST C-HPU Soll ohne Ratio] - [KST C-HPU Ist],\n    [KST C-HPU Soll ohne Ratio]\n)\n",
+          "formatString": "0.00\\ %;-0.00\\ %;0.00\\ %",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST C-HPU Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST C-HPU Ist"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST Ratio Soll",
+          "dataType": "Double",
+          "expression": "\nDIVIDE(\n    [KST C-HPU Soll ohne Ratio] - [KST C-HPU Soll],\n    [KST C-HPU Soll ohne Ratio]\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST C-HPU Soll ohne Ratio"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST C-HPU Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "KST Delta AnMin",
+          "dataType": "Double",
+          "expression": "\n[KST AnMin Ist] - [KST AnMin Soll]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Ist"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu_kst",
+                "name": "KST AnMin Soll"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "dim_kostenstellen",
+      "measures": [
+        {
+          "name": "AnMin Direkt Delta",
+          "dataType": "Double",
+          "expression": "\n[AnMin Direkt Ist] - [AnMin Direkt Soll]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Direkt Ist"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Direkt Soll"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Direkt VBZ",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist D] - [AnMin Soll D]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist D"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Direkt Ind",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist DI] - [AnMin Soll DI]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist DI"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Ind",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist I] - [AnMin Soll I]\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist I"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Ist D YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Ist D],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Ist DI YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Ist DI],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Ist I YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Ist I],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Ist I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll D YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Soll D],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll D"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll DI YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Soll DI],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)\n",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll DI"
+              }
+            ]
+          }
+        },
+        {
+          "name": "AnMin Soll I YTD",
+          "dataType": "Double",
+          "expression": "\nVAR _jahr = [Aktuelles Jahr]\nVAR _kw = [Aktuelle KW]\nRETURN\nCALCULATE(\n    [AnMin Soll I],\n    FILTER(ALL(dim_zeit_jahr_kw), dim_zeit_jahr_kw[jahr] = _jahr && dim_zeit_jahr_kw[kw] <= _kw)\n)",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelles Jahr"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "Aktuelle KW"
+              },
+              {
+                "schema": "extension",
+                "entity": "fakt_chpu",
+                "name": "AnMin Soll I"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Direkt YTD",
+          "dataType": "Double",
+          "expression": "\n([AnMin Ist D YTD] + [AnMin Ist DI YTD]) -\n([AnMin Soll D YTD] + [AnMin Soll DI YTD])\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Ist D YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Ist DI YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Soll D YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Soll DI YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Direkt VBZ YTD",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist D YTD] - [AnMin Soll D YTD]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Ist D YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Soll D YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Direkt Ind YTD",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist DI YTD] - [AnMin Soll DI YTD]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Ist DI YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Soll DI YTD"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Delta AnMin Ind YTD",
+          "dataType": "Double",
+          "expression": "\n[AnMin Ist I YTD] - [AnMin Soll I YTD]\n",
+          "formatString": "0",
+          "references": {
+            "measures": [
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Ist I YTD"
+              },
+              {
+                "schema": "extension",
+                "entity": "dim_kostenstellen",
+                "name": "AnMin Soll I YTD"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "75e60f509571d3864bd6",
+  "position": {
+    "x": 1248,
+    "y": -8,
+    "z": 5000,
+    "height": 1088,
+    "width": 672.00000000000011,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "_TestMeasure_DataDump"
+                }
+              },
+              "queryRef": "fakt_chpu._TestMeasure_DataDump",
+              "nativeQueryRef": "_TestMeasure_DataDump"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

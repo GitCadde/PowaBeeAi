@@ -1,0 +1,330 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "e5dc88c34d8a37054675",
+  "position": {
+    "x": 192,
+    "y": 272,
+    "z": 2000,
+    "height": 448,
+    "width": 1616,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_werke"
+                    }
+                  },
+                  "Property": "bezeichnung"
+                }
+              },
+              "queryRef": "dim_werke.bezeichnung",
+              "nativeQueryRef": "bezeichnung",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Ist Ø4W"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Ist Ø4W",
+              "nativeQueryRef": "AnMin Ist Ø4W"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Soll Ø4W"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Soll Ø4W",
+              "nativeQueryRef": "AnMin Soll Ø4W"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Delta AnMin Ø4W"
+                }
+              },
+              "queryRef": "fakt_chpu.Delta AnMin Ø4W",
+              "nativeQueryRef": "Delta AnMin Ø4W"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Ist YTD",
+              "nativeQueryRef": "AnMin Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "AnMin Soll YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.AnMin Soll YTD",
+              "nativeQueryRef": "AnMin Soll YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Delta AnMin YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Delta AnMin YTD",
+              "nativeQueryRef": "Delta AnMin YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "dim_kostenstellen"
+                    }
+                  },
+                  "Property": "Delta AnMin Direkt YTD"
+                }
+              },
+              "queryRef": "dim_kostenstellen.Delta AnMin Direkt YTD",
+              "nativeQueryRef": "Delta AnMin Direkt YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "dim_kostenstellen"
+                    }
+                  },
+                  "Property": "Delta AnMin Direkt VBZ YTD"
+                }
+              },
+              "queryRef": "dim_kostenstellen.Delta AnMin Direkt VBZ YTD",
+              "nativeQueryRef": "Delta AnMin Direkt VBZ YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "dim_kostenstellen"
+                    }
+                  },
+                  "Property": "Delta AnMin Direkt Ind YTD"
+                }
+              },
+              "queryRef": "dim_kostenstellen.Delta AnMin Direkt Ind YTD",
+              "nativeQueryRef": "Delta AnMin Direkt Ind YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "dim_kostenstellen"
+                    }
+                  },
+                  "Property": "Delta AnMin Ind YTD"
+                }
+              },
+              "queryRef": "dim_kostenstellen.Delta AnMin Ind YTD",
+              "nativeQueryRef": "Delta AnMin Ind YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Ist YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Ist YTD",
+              "nativeQueryRef": "Ratio Ist YTD"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Schema": "extension",
+                      "Entity": "fakt_chpu"
+                    }
+                  },
+                  "Property": "Ratio Soll YTD"
+                }
+              },
+              "queryRef": "fakt_chpu.Ratio Soll YTD",
+              "nativeQueryRef": "Ratio Soll YTD"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "subTotals": [
+        {
+          "properties": {
+            "rowSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0d4eecc0566a94b0002b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_werke"
+              }
+            },
+            "Property": "bezeichnung"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "dim_werke",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "bezeichnung"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Braunschweig'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Hannover'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Kassel'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Salzgitter'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Wolfsburg'"
+                        }
+                      }
+                    ],
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Chemnitz'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

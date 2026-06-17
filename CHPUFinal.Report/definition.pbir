@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json",
+  "version": "4.0",
+  "datasetReference": {
+    "byConnection": {
+      "connectionString": "Data Source=\"powerbi://api.powerbi.com/v1.0/myorg/WS_0103_INSIGHT FACTORY DEV_VWGA\";initial catalog=chpu;access mode=readonly;integrated security=ClaimsToken;semanticmodelid=47d623bb-4ff4-4ec7-8338-6a22ff46de2a"
+    }
+  }
+}

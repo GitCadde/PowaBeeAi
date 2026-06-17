@@ -1,0 +1,77 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
+  "name": "71397121870cee03b340",
+  "position": {
+    "x": 816,
+    "y": 192,
+    "z": 3000,
+    "height": 128,
+    "width": 400,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_zeit_jahr_kw"
+                    }
+                  },
+                  "Property": "kw"
+                }
+              },
+              "queryRef": "dim_zeit_jahr_kw.kw",
+              "nativeQueryRef": "kw",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Between'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "29bf3a978a74767005c1",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_zeit_jahr_kw"
+              }
+            },
+            "Property": "kw"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
