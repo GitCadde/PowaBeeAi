@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "e7201407c03601bd5b9c",
   "position": {
-    "x": 1696,
+    "x": 24,
     "y": 1032,
-    "z": 4000,
-    "height": 48,
-    "width": 224,
+    "z": 500,
+    "height": 36,
+    "width": 360,
     "tabOrder": 4000
   },
   "visual": {
@@ -19,14 +19,14 @@
               {
                 "textRuns": [
                   {
-                    "value": "KSU 0.2   - VERTRAULICH",
+                    "value": "KSU 0.2 – VERTRAULICH",
                     "textStyle": {
-                      "fontSize": "14pt",
-                      "color": "#666666"
+                      "fontSize": "9pt",
+                      "color": "#808080",
+                      "fontFamily": "DIN"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }

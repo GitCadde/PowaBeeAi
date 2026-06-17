@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "328cae29e0210bcb039b",
   "position": {
-    "x": 112,
-    "y": 0,
-    "z": 0,
-    "height": 96,
-    "width": 720,
+    "x": 104,
+    "y": 8,
+    "z": 1000,
+    "height": 80,
+    "width": 520,
     "tabOrder": 0
   },
   "visual": {
@@ -19,10 +19,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "Insight Factory - C-HPU-Bericht",
+                    "value": "Insight Factory – C-HPU-Bericht",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontSize": "28pt"
+                      "fontSize": "20pt",
+                      "fontFamily": "DIN"
                     }
                   }
                 ]
@@ -30,9 +31,11 @@
               {
                 "textRuns": [
                   {
-                    "value": "C-HPU Entwicklung (Werk Detail)",
+                    "value": "Werk Detail",
                     "textStyle": {
-                      "fontSize": "24pt"
+                      "fontSize": "13pt",
+                      "fontFamily": "DIN",
+                      "color": "#5B7D96"
                     }
                   }
                 ]

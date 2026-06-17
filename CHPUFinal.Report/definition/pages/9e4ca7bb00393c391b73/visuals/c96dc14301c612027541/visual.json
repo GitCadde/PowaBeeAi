@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "c96dc14301c612027541",
   "position": {
-    "x": 1035.7777777777762,
-    "y": 0,
-    "z": 8000,
+    "x": 1072,
+    "y": 24,
+    "z": 8002,
     "height": 48,
-    "width": 208,
+    "width": 200,
     "tabOrder": 8000
   },
   "visual": {
@@ -69,6 +69,17 @@
                   "Value": "'📈 Entwicklung VK'"
                 }
               }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#404040'"
+                    }
+                  }
+                }
+              }
             }
           },
           "selector": {
@@ -125,6 +136,24 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#5B7D96'"
+                    }
+                  }
                 }
               }
             }

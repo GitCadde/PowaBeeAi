@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "f3ff9d05bab97a2002d4",
   "position": {
-    "x": 571.77777777777783,
-    "y": 759.99999999999989,
-    "z": 9000,
-    "height": 112,
-    "width": 752.00000000000011,
+    "x": 24,
+    "y": 776,
+    "z": 3000,
+    "height": 200,
+    "width": 1872,
     "tabOrder": 9000
   },
   "visual": {
@@ -60,7 +60,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "16D"
+                  "Value": "30D"
                 }
               }
             },
@@ -90,7 +90,14 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
                 }
               }
             }
@@ -118,9 +125,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.4
+                    "Literal": {
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -257,7 +263,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             },
@@ -265,6 +271,24 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E0E0E0'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
                 }
               }
             }

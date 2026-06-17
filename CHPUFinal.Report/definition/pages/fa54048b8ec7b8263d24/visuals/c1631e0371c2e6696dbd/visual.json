@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "c1631e0371c2e6696dbd",
   "position": {
-    "x": 832,
-    "y": 144,
-    "z": 6000,
-    "height": 48,
-    "width": 272,
+    "x": 32,
+    "y": 784,
+    "z": 4000,
+    "height": 32,
+    "width": 400,
     "tabOrder": 6000
   },
   "visual": {
@@ -19,15 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "Kontext / Hintergrund",
+                    "value": "ℹ️ Kontext / Hintergrund",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontFamily": "Segoe (Bold)",
-                      "fontSize": "18pt"
+                      "fontSize": "12pt",
+                      "fontFamily": "DIN",
+                      "color": "#5B7D96"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }

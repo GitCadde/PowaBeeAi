@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "1db2bbd883e0609eb670",
   "position": {
-    "x": 1659.7777777777762,
-    "y": 0,
-    "z": 11000,
+    "x": 1696,
+    "y": 24,
+    "z": 8005,
     "height": 48,
-    "width": 208,
+    "width": 200,
     "tabOrder": 11000
   },
   "visual": {
@@ -69,6 +69,17 @@
                   "Value": "'🎯 C-HPU Ziele VK'"
                 }
               }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#404040'"
+                    }
+                  }
+                }
+              }
             }
           },
           "selector": {
@@ -125,6 +136,24 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#5B7D96'"
+                    }
+                  }
                 }
               }
             }

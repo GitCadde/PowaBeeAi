@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "9d636db421ca849d980c",
   "position": {
-    "x": 752.00000000000011,
-    "y": 576,
-    "z": 7000,
-    "height": 48,
-    "width": 416,
+    "x": 32,
+    "y": 408,
+    "z": 4000,
+    "height": 32,
+    "width": 400,
     "tabOrder": 7000
   },
   "visual": {
@@ -19,15 +19,15 @@
               {
                 "textRuns": [
                   {
-                    "value": "Wesentliche Entscheidungsbedarfe",
+                    "value": "⚠️ Wesentliche Entscheidungsbedarfe",
                     "textStyle": {
                       "fontWeight": "bold",
-                      "fontFamily": "Segoe (Bold)",
-                      "fontSize": "18pt"
+                      "fontSize": "12pt",
+                      "fontFamily": "DIN",
+                      "color": "#5B7D96"
                     }
                   }
-                ],
-                "horizontalTextAlignment": "center"
+                ]
               }
             ]
           }

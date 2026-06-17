@@ -493,23 +493,23 @@
   "minimum": "#44C088",
   "textClasses": {
     "callout": {
-      "fontFace": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-      "fontSize": 28,
+      "fontFace": "'DIN', wf_standard-font, 'Segoe UI', helvetica, arial, sans-serif",
+      "fontSize": 30,
       "color": "#404040"
     },
     "title": {
-      "fontFace": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+      "fontFace": "'DIN', wf_standard-font, 'Segoe UI', helvetica, arial, sans-serif",
       "fontSize": 12,
       "color": "#404040"
     },
     "header": {
-      "fontFace": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-      "fontSize": 14,
+      "fontFace": "'DIN', wf_standard-font, 'Segoe UI', helvetica, arial, sans-serif",
+      "fontSize": 13,
       "color": "#404040"
     },
     "label": {
-      "fontFace": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-      "fontSize": 10,
+      "fontFace": "'DIN', wf_standard-font, 'Segoe UI', helvetica, arial, sans-serif",
+      "fontSize": 11,
       "color": "#666666"
     }
   },
@@ -568,7 +568,7 @@
         "columnHeaders": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 10,
+            "fontSize": 11,
             "fontColor": {
               "solid": {
                 "color": "#FFFFFF"
@@ -607,6 +607,7 @@
         "total": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
             "fontColor": {
               "solid": {
                 "color": "#404040"
@@ -640,7 +641,7 @@
         "columnHeaders": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 10,
+            "fontSize": 11,
             "fontColor": {
               "solid": {
                 "color": "#FFFFFF"
@@ -704,12 +705,64 @@
         ]
       }
     },
+    "cardVisual": {
+      "*": {
+        "value": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 30,
+            "fontColor": {
+              "solid": {
+                "color": "#404040"
+              }
+            }
+          }
+        ],
+        "label": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 11,
+            "fontColor": {
+              "solid": {
+                "color": "#666666"
+              }
+            }
+          }
+        ],
+        "layout": [
+          {
+            "backgroundShow": true,
+            "backgroundColor": {
+              "solid": {
+                "color": "#FFFFFF"
+              }
+            }
+          }
+        ],
+        "outline": [
+          {
+            "show": true,
+            "lineColor": {
+              "solid": {
+                "color": "#E0E0E0"
+              }
+            },
+            "weight": 1
+          }
+        ],
+        "shadowCustom": [
+          {
+            "show": true
+          }
+        ]
+      }
+    },
     "card": {
       "*": {
         "labels": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 22,
+            "fontSize": 30,
             "color": {
               "solid": {
                 "color": "#404040"
@@ -721,10 +774,10 @@
         "categoryLabels": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 10,
+            "fontSize": 11,
             "color": {
               "solid": {
-                "color": "#808080"
+                "color": "#666666"
               }
             }
           }
@@ -788,7 +841,7 @@
         "categoryAxis": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 9,
+            "fontSize": 10,
             "labelColor": {
               "solid": {
                 "color": "#808080"
@@ -800,7 +853,7 @@
         "valueAxis": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 9,
+            "fontSize": 10,
             "labelColor": {
               "solid": {
                 "color": "#808080"
@@ -819,7 +872,7 @@
         "labels": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 8,
+            "fontSize": 9,
             "color": {
               "solid": {
                 "color": "#404040"
@@ -835,7 +888,7 @@
         "categoryAxis": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 9,
+            "fontSize": 10,
             "labelColor": {
               "solid": {
                 "color": "#808080"
@@ -847,7 +900,7 @@
         "valueAxis": [
           {
             "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
-            "fontSize": 9,
+            "fontSize": 10,
             "labelColor": {
               "solid": {
                 "color": "#808080"
@@ -860,6 +913,186 @@
               }
             },
             "gridlineStyle": "solid"
+          }
+        ],
+        "legend": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "position": "Top"
+          }
+        ]
+      }
+    },
+    "barChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#E8E8E8"
+              }
+            },
+            "gridlineStyle": "solid",
+            "gridlineThickness": 1
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 9,
+            "color": {
+              "solid": {
+                "color": "#404040"
+              }
+            },
+            "show": true
+          }
+        ],
+        "legend": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "position": "Top"
+          }
+        ]
+      }
+    },
+    "lineStackedColumnComboChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#E8E8E8"
+              }
+            },
+            "gridlineStyle": "solid",
+            "gridlineThickness": 1
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 9,
+            "color": {
+              "solid": {
+                "color": "#404040"
+              }
+            },
+            "show": true
+          }
+        ],
+        "legend": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "position": "Top"
+          }
+        ]
+      }
+    },
+    "lineClusteredColumnComboChart": {
+      "*": {
+        "categoryAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": false
+          }
+        ],
+        "valueAxis": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "labelColor": {
+              "solid": {
+                "color": "#808080"
+              }
+            },
+            "gridlineShow": true,
+            "gridlineColor": {
+              "solid": {
+                "color": "#E8E8E8"
+              }
+            },
+            "gridlineStyle": "solid",
+            "gridlineThickness": 1
+          }
+        ],
+        "labels": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 9,
+            "color": {
+              "solid": {
+                "color": "#404040"
+              }
+            },
+            "show": true
+          }
+        ],
+        "legend": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, helvetica, arial, sans-serif",
+            "fontSize": 10,
+            "position": "Top"
+          }
+        ]
+      }
+    },
+    "actionButton": {
+      "*": {
+        "text": [
+          {
+            "fontFamily": "'DIN', wf_standard-font, 'Segoe UI', helvetica, arial, sans-serif",
+            "fontSize": 11,
+            "bold": true
           }
         ]
       }

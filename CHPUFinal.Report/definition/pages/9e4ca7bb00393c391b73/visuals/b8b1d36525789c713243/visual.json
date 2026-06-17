@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.10.0/schema.json",
   "name": "b8b1d36525789c713243",
   "position": {
-    "x": 827.77777777777624,
-    "y": 0,
-    "z": 7000,
+    "x": 864,
+    "y": 24,
+    "z": 8001,
     "height": 48,
-    "width": 208,
+    "width": 200,
     "tabOrder": 7000
   },
   "visual": {
@@ -69,6 +69,17 @@
                   "Value": "'📋 Cockpit C-HPU'"
                 }
               }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#404040'"
+                    }
+                  }
+                }
+              }
             }
           },
           "selector": {
@@ -125,6 +136,24 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#5B7D96'"
+                    }
+                  }
                 }
               }
             }
